@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "logo": "Portfolio",
+    "about": "Sobre Mi",
+    "skills": "Habilitats", 
+    "projects": "Projectes",
+    "contact": "Contacte"
+  },
+  "buttons": {
+    "viewMore": "Veure Més",
+    "viewProject": "Veure Projecte",
+    "download": "Descarregar",
+    "send": "Enviar",
+    "close": "Tancar"
+  },
+  "labels": {
+    "name": "Nom",
+    "email": "Email", 
+    "message": "Missatge",
+    "language": "Idioma"
+  },
+  "meta": {
+    "loading": "Carregant...",
+    "error": "Alguna cosa ha anat malament",
+    "success": "Èxit!"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "title": "My Skills",
+  "subtitle": "Technologies I Work With",
+  "categories": {
+    "frontend": {
+      "title": "Frontend",
+      "description": "Creating beautiful and interactive user interfaces"
+    },
+    "backend": {
+      "title": "Backend", 
+      "description": "Building robust server-side applications"
+    },
+    "tools": {
+      "title": "Tools & Others",
+      "description": "Development tools and methodologies"
+    }
+  },
+  "level": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate", 
+    "advanced": "Advanced",
+    "expert": "Expert"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "navbar": {
+    "logo": {
+      "en": "Portfolio",
+      "es": "Portfolio", 
+      "ca": "Portfolio"
+    },
+    "navigation": {
+      "about": {
+        "en": "About Me",
+        "es": "Sobre Mí",
+        "ca": "Sobre Mi"
+      },
+      "skills": {
+        "en": "Skills",
+        "es": "Habilidades",
+        "ca": "Habilitats"
+      },
+      "projects": {
+        "en": "Projects",
+        "es": "Proyectos",
+        "ca": "Projectes"
+      },
+      "contact": {
+        "en": "Contact",
+        "es": "Contacto",
+        "ca": "Contacte"
+      }
+    },
+    "languages": {
+      "en": "EN",
+      "es": "ES", 
+      "ca": "CA"
+    }
+  }
+}

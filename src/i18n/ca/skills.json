@@ -1,0 +1,24 @@
+{
+  "title": "Les Meves Habilitats",
+  "subtitle": "Tecnologies amb les que Treballo",
+  "categories": {
+    "frontend": {
+      "title": "Frontend",
+      "description": "Creant interfícies d'usuari boniques i interactives"
+    },
+    "backend": {
+      "title": "Backend", 
+      "description": "Construint aplicacions robustes del costat del servidor"
+    },
+    "tools": {
+      "title": "Eines i Altres",
+      "description": "Eines de desenvolupament i metodologies"
+    }
+  },
+  "level": {
+    "beginner": "Principiant",
+    "intermediate": "Intermig", 
+    "advanced": "Avançat",
+    "expert": "Expert"
+  }
+}

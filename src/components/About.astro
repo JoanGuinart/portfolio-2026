@@ -1,0 +1,510 @@
+---
+import { useTranslations, type Lang } from "../utils/i18n";
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang } = Astro.props;
+const currentLang = lang || "en";
+const t = useTranslations(currentLang);
+---
+
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="about-content">
+      <!-- Section Header -->
+      <div class="about-header">
+        <h2 class="section-title">{t("home.about.title")}</h2>
+        <p class="section-subtitle">{t("home.about.subtitle")}</p>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="about-grid">
+        <!-- Story Card -->
+        <div class="story-card">
+          <div class="story-header">
+            <div class="story-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <h3 class="story-title">{t("home.about.journey.title")}</h3>
+          </div>
+          <p class="story-text">{t("home.about.journey.description")}</p>
+
+          <!-- Career Path -->
+          <div class="career-path">
+            <div class="path-item">
+              <div class="path-icon">🔧</div>
+              <div class="path-content">
+                <h4>{t("home.about.journey.mechanic.title")}</h4>
+                <p>{t("home.about.journey.mechanic.description")}</p>
+              </div>
+            </div>
+            <div class="path-arrow">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M6 3L11 8L6 13"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <div class="path-item">
+              <div class="path-icon">✈️</div>
+              <div class="path-content">
+                <h4>{t("home.about.journey.aviation.title")}</h4>
+                <p>{t("home.about.journey.aviation.description")}</p>
+              </div>
+            </div>
+            <div class="path-arrow">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M6 3L11 8L6 13"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <div class="path-item">
+              <div class="path-icon">💻</div>
+              <div class="path-content">
+                <h4>{t("home.about.journey.frontend.title")}</h4>
+                <p>{t("home.about.journey.frontend.description")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fun Facts Card -->
+        <div class="funfacts-card">
+          <div class="funfacts-header">
+            <div class="funfacts-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 2L2 7L12 12L22 7L12 2Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M2 17L12 22L22 17"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M2 12L12 17L22 12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <h3 class="funfacts-title">{t("home.about.funfacts.title")}</h3>
+          </div>
+
+          <div class="facts-list">
+            <div class="fact-item">
+              <div class="fact-emoji">🛹</div>
+              <div class="fact-content">
+                <h4>{t("home.about.funfacts.skateboard.title")}</h4>
+                <p>{t("home.about.funfacts.skateboard.description")}</p>
+              </div>
+            </div>
+
+            <div class="fact-item">
+              <div class="fact-emoji">🎧</div>
+              <div class="fact-content">
+                <h4>{t("home.about.funfacts.dj.title")}</h4>
+                <p>{t("home.about.funfacts.dj.description")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Values Section -->
+      <div class="values-section">
+        <h3 class="values-title">{t("home.about.values.title")}</h3>
+        <div class="values-grid">
+          <div class="value-item">
+            <div class="value-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M10 2L12.09 6.26L17 7L13.5 10.74L14.18 15.74L10 13.77L5.82 15.74L6.5 10.74L3 7L7.91 6.26L10 2Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <h4>{t("home.about.values.precision.title")}</h4>
+            <p>{t("home.about.values.precision.description")}</p>
+          </div>
+
+          <div class="value-item">
+            <div class="value-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M17 8.5L12 13.5L8 9.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <circle
+                  cx="10"
+                  cy="10"
+                  r="8"
+                  stroke="currentColor"
+                  stroke-width="2"></circle>
+              </svg>
+            </div>
+            <h4>{t("home.about.values.adaptation.title")}</h4>
+            <p>{t("home.about.values.adaptation.description")}</p>
+          </div>
+
+          <div class="value-item">
+            <div class="value-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M10 1L13 7L19 7L14.5 11L16 17L10 14L4 17L5.5 11L1 7L7 7L10 1Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <h4>{t("home.about.values.creativity.title")}</h4>
+            <p>{t("home.about.values.creativity.description")}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../_mediaqueries.scss" as *;
+  @use "../styles/variables" as *;
+
+  .about-section {
+    padding: var(--space-20) 0;
+    background: var(--color-surface-elevated);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+
+  // Header
+  .about-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-4) 0;
+
+    @include md {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  .section-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  // Grid Layout
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+    }
+  }
+
+  // Story Card
+  .story-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+
+    &:hover {
+      border-color: var(--color-primary-200);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+  }
+
+  .story-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .story-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary-100);
+    border-radius: var(--radius-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-600);
+  }
+
+  .story-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .story-text {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  // Career Path
+  .career-path {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+
+    @include md {
+      flex-direction: row;
+      align-items: stretch;
+    }
+  }
+
+  .path-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex: 1;
+    height: 100%;
+
+    @include md {
+      flex-direction: column;
+      text-align: center;
+      gap: var(--space-2);
+    }
+  }
+
+  .path-icon {
+    font-size: var(--font-size-2xl);
+    width: 50px;
+    height: 50px;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .path-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    
+    @include md {
+      height: 100%;
+    }
+    
+    h4 {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin: 0 0 var(--space-1) 0;
+    }
+
+    p {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-tertiary);
+    }
+  }
+
+  .path-arrow {
+    color: var(--color-primary-500);
+    display: none;
+
+    @include md {
+      display: flex;
+      margin: 0 var(--space-2);
+    }
+  }
+
+  // Fun Facts Card
+  .funfacts-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+
+    &:hover {
+      border-color: var(--color-primary-200);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+  }
+
+  .funfacts-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .funfacts-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-accent-100);
+    border-radius: var(--radius-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent-600);
+  }
+
+  .funfacts-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .facts-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .fact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .fact-emoji {
+    font-size: var(--font-size-2xl);
+    width: 50px;
+    height: 50px;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .fact-content {
+    h4 {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin: 0 0 var(--space-2) 0;
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+  }
+
+  // Values Section
+  .values-section {
+    text-align: center;
+  }
+
+  .values-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-8) 0;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+
+    @include md {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .value-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+
+    &:hover {
+      border-color: var(--color-primary-200);
+      transform: translateY(-2px);
+    }
+
+    h4 {
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin: var(--space-3) 0 var(--space-2) 0;
+    }
+
+    p {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+  }
+
+  .value-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary-100);
+    border-radius: var(--radius-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-600);
+    margin: 0 auto;
+  }
+</style>

@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "logo": "Portfolio",
+    "about": "Sobre Mí",
+    "skills": "Habilidades", 
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "buttons": {
+    "viewMore": "Ver Más",
+    "viewProject": "Ver Proyecto",
+    "download": "Descargar",
+    "send": "Enviar",
+    "close": "Cerrar"
+  },
+  "labels": {
+    "name": "Nombre",
+    "email": "Email", 
+    "message": "Mensaje",
+    "language": "Idioma"
+  },
+  "meta": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "success": "¡Éxito!"
+  }
+}

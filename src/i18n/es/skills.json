@@ -1,0 +1,24 @@
+{
+  "title": "Mis Habilidades",
+  "subtitle": "Tecnologías con las que Trabajo",
+  "categories": {
+    "frontend": {
+      "title": "Frontend",
+      "description": "Creando interfaces de usuario hermosas e interactivas"
+    },
+    "backend": {
+      "title": "Backend", 
+      "description": "Construyendo aplicaciones robustas del lado del servidor"
+    },
+    "tools": {
+      "title": "Herramientas y Otros",
+      "description": "Herramientas de desarrollo y metodologías"
+    }
+  },
+  "level": {
+    "beginner": "Principiante",
+    "intermediate": "Intermedio", 
+    "advanced": "Avanzado",
+    "expert": "Experto"
+  }
+}

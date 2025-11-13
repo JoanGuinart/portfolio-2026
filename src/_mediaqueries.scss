@@ -1,0 +1,44 @@
+// Media Query Variables
+// Breakpoints para responsive design
+
+$sm: 500px;
+$md: 1024px;
+$xl: 1200px;
+
+// Mixins para facilitar el uso de media queries
+@mixin sm {
+  @media screen and (min-width: $sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media screen and (min-width: $md) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media screen and (min-width: $xl) {
+    @content;
+  }
+}
+
+// Mixins para max-width (mobile-first)
+@mixin max-sm {
+  @media screen and (max-width: #{$sm - 1px}) {
+    @content;
+  }
+}
+
+@mixin max-md {
+  @media screen and (max-width: #{$md - 1px}) {
+    @content;
+  }
+}
+
+@mixin max-xl {
+  @media screen and (max-width: #{$xl - 1px}) {
+    @content;
+  }
+}

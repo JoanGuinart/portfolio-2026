@@ -1,0 +1,22 @@
+---
+import HomePage from "../../components/pages/HomePage.astro";
+import { type Lang } from '../../utils/i18n';
+
+// Solo generar rutas para idiomas con prefijo
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },  // Genera '/es' para español
+    { params: { lang: 'ca' } }   // Genera '/ca' para catalán
+  ];
+}
+
+export interface Props {
+  params: {
+    lang: Lang;
+  };
+}
+
+const { lang } = Astro.params;
+---
+
+<HomePage lang={lang as Lang} />

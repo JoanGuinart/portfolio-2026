@@ -1,0 +1,80 @@
+{
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Joan Guinart",
+    "role": "Desarrollador Frontend",
+    "tagline": "Creando Excelencia Digital",
+    "description": "3+ años transformando ideas en experiencias web hermosas y eficientes. Especializado en React, TypeScript y arquitecturas frontend modernas.",
+    "cta": "Ver Mi Trabajo",
+    "contact": "Contactar",
+    "scrollDown": "Explora más abajo",
+    "availability": "Disponible para proyectos",
+    "techLabel": "Tecnologías principales",
+    "viewAllSkills": "Ver todas las skills"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "subtitle": "De la Mecánica al Código - Mi Trayectoria Única",
+    "journey": {
+      "title": "Mi Trayectoria",
+      "description": "Un camino no tradicional que formó mi mentalidad de resolución de problemas y atención al detalle.",
+      "mechanic": {
+        "title": "Mecánico de Coches",
+        "description": "Donde comenzaron la precisión y las habilidades de resolución de problemas"
+      },
+      "aviation": {
+        "title": "Mecánico de Aviones en Vueling",
+        "description": "Entorno de alto riesgo que requiere atención meticulosa al detalle"
+      },
+      "frontend": {
+        "title": "Desarrollador Frontend",
+        "description": "Aplicando la precisión mecánica a la artesanía digital"
+      }
+    },
+    "funfacts": {
+      "title": "Más Allá del Código",
+      "skateboard": {
+        "title": "Campeón de Skateboard",
+        "description": "1er puesto en Cataluña 2022 y múltiples 2º puestos según la Federación Catalana de Patinaje"
+      },
+      "dj": {
+        "title": "DJ y Amante de la Música",
+        "description": "He actuado en varias discotecas, llevando energía a la pista de baile"
+      }
+    },
+    "values": {
+      "title": "Lo Que Me Motiva",
+      "precision": {
+        "title": "Precisión",
+        "description": "De la mecánica al código, cada detalle importa"
+      },
+      "adaptation": {
+        "title": "Adaptabilidad",
+        "description": "Prosperando en diferentes industrias y desafíos"
+      },
+      "creativity": {
+        "title": "Creatividad",
+        "description": "Ya sea patinando, pinchando o programando - siempre encontrando nuevas formas"
+      }
+    }
+  },
+  "skills": {
+    "title": "Skills y Tecnologías",
+    "subtitle": "Estas son las tecnologías y herramientas que utilizo para dar vida a las ideas",
+    "categories": {
+      "frontend": "Desarrollo Frontend",
+      "backend": "Estado y APIs",
+      "design": "Animación y Diseño",
+      "tools": "Herramientas de Desarrollo"
+    },
+    "levels": {
+      "expert": "Experto",
+      "advanced": "Avanzado",
+      "intermediate": "Intermedio"
+    }
+  },
+  "meta": {
+    "title": "Joan Guinart - Desarrollador Full Stack",
+    "description": "Desarrollador Full Stack especializado en tecnologías web modernas"
+  }
+}
