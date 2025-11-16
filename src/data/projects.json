@@ -1,0 +1,224 @@
+{
+  "projects": [
+    {
+      "id": "mirades",
+      "title": "Mirades",
+      "client": "Ara.cat",
+      "technologies": ["Next.js", "Tailwind CSS", "TypeScript"],
+      "image": "mirades.jpg",
+      "featured": true,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "menja-sa-i-sostenible",
+      "title": "Menja sa i sostenible",
+      "client": "Generalitat de Catalunya",
+      "technologies": ["React", "Tailwind CSS", "SCSS"],
+      "image": "menja-sa-i-sostenible.jpg",
+      "featured": true,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "infonet-fr",
+      "title": "Infonet FR",
+      "client": "Infonet France",
+      "technologies": ["PHP", "SCSS", "Bootstrap", "Twig", "Symfony", "jQuery", "JavaScript", "TypeScript"],
+      "image": "infonet-fr.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "vins-catalans",
+      "title": "Vins Catalans",
+      "client": "Generalitat de Catalunya",
+      "technologies": ["Tailwind CSS", "SCSS", "PHP", "JavaScript", "GSAP"],
+      "image": "vins-catalans.jpg",
+      "featured": true,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "memoria-interactiva-2023",
+      "title": "Memoria Interactiva 2023",
+      "client": "Greenalia",
+      "technologies": ["PHP", "SCSS", "JavaScript"],
+      "image": "memoria-interactiva-2023.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2023
+    },
+    {
+      "id": "petits-negocis-grans-xifres",
+      "title": "Petits negocis, grans xifres",
+      "client": "CaixaBank",
+      "technologies": ["PHP", "JavaScript", "Tailwind CSS"],
+      "image": "petits-negocis-grans-xifres.jpg",
+      "featured": true,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "si-ets-lgtbi-tens-una-xarxa-a-prop",
+      "title": "Si ets LGTBI tens una xarxa a prop",
+      "client": "Generalitat de Catalunya",
+      "technologies": ["PHP", "JavaScript", "Tailwind CSS"],
+      "image": "si-ets-lgtbi-tens-una-xarxa-a-prop.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2023
+    },
+    {
+      "id": "telefon-asil",
+      "title": "Telèfon Asil",
+      "client": "CCAR",
+      "technologies": ["PHP", "JavaScript", "Tailwind CSS"],
+      "image": "telefon-asil.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2023
+    },
+    {
+      "id": "saps-reciclar-be",
+      "title": "Saps reciclar bé?",
+      "client": "Generalitat de Catalunya",
+      "technologies": ["PHP", "JavaScript", "Tailwind CSS"],
+      "image": "saps-reciclar-be.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2023
+    },
+    {
+      "id": "assetjament-escolar",
+      "title": "Assetjament escolar",
+      "client": "Generalitat de Catalunya",
+      "technologies": ["PHP", "JavaScript", "SCSS", "GSAP"],
+      "image": "assetjament-escolar.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2023
+    },
+    {
+      "id": "tu-tambe-pots-ser-mecenes-cultural",
+      "title": "Tu també pots ser mecenes cultural",
+      "client": "Generalitat de Catalunya",
+      "technologies": ["PHP", "JavaScript", "SCSS", "GSAP"],
+      "image": "tu-tambe-pots-ser-mecenes-cultural.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2023
+    },
+    {
+      "id": "quin-es-el-teu-grau-de-soledat",
+      "title": "Quin és el teu grau de soledat?",
+      "client": "Sant Joan de Déu",
+      "technologies": ["PHP", "JavaScript", "SCSS", "GSAP"],
+      "image": "quin-es-el-teu-grau-de-soledat.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2023
+    },
+    {
+      "id": "presentacio-cccb",
+      "title": "Presentació CCCB",
+      "client": "CCCB",
+      "technologies": ["Astro.js", "React", "SCSS", "TypeScript"],
+      "image": "presentacio-cccb.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "aixi-esta-canviant-el-port-de-barcelona",
+      "title": "Així està canviant el Port de Barcelona",
+      "client": "Port de Barcelona",
+      "technologies": ["PHP", "JavaScript", "SCSS", "GSAP"],
+      "image": "aixi-esta-canviant-el-port-de-barcelona.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2023
+    },
+    {
+      "id": "mapa-de-districtes-de-barcelona",
+      "title": "Mapa de districtes de Barcelona",
+      "client": "Ajuntament de Barcelona",
+      "technologies": ["PHP", "JavaScript", "SCSS", "GSAP"],
+      "image": "mapa-de-districtes-de-barcelona.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2023
+    },
+    {
+      "id": "triar-carrera",
+      "title": "Triar carrera",
+      "client": "Universitat de Girona",
+      "technologies": ["Astro.js", "React", "Tailwind CSS", "SCSS"],
+      "image": "triar-carrera.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "ofimobils",
+      "title": "Ofimòbils",
+      "client": "CaixaBank",
+      "technologies": ["Astro.js", "React", "Tailwind CSS", "SCSS", "GSAP"],
+      "image": "ofimobils.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "no-perque-passi-lluny-deixa-de-passar",
+      "title": "No perquè passi lluny, deixa de passar",
+      "client": "CCAR",
+      "technologies": ["Astro.js", "React", "Tailwind CSS", "SCSS", "GSAP"],
+      "image": "no-perque-passi-lluny-deixa-de-passar.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "cinc-remeis-a-cinc-maldecaps",
+      "title": "Cinc remeis a cinc maldecaps",
+      "client": "Banc Sabadell",
+      "technologies": ["Astro.js", "React", "Tailwind CSS", "SCSS", "GSAP"],
+      "image": "cinc-remeis-a-cinc-maldecaps.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "digues-qui-ets-i-et-direm-que-pots-estudiar",
+      "title": "Digues qui ets i et direm què pots estudiar",
+      "client": "UOC",
+      "technologies": ["Astro.js", "React", "Tailwind CSS", "SCSS", "GSAP"],
+      "image": "digues-qui-ets-i-et-direm-que-pots-estudiar.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "subscripcions-ara",
+      "title": "Subscripcions ARA",
+      "client": "ARA",
+      "technologies": ["Next.js", "React", "Tailwind CSS", "SCSS"],
+      "image": "subscripcions-ara.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2024
+    },
+    {
+      "id": "mercadona",
+      "title": "Mercadona",
+      "client": "Mercadona",
+      "technologies": ["Astro.js", "React", "SCSS", "GSAP"],
+      "image": "mercadona.jpg",
+      "featured": false,
+      "demoUrl": "",
+      "year": 2024
+    }
+  ]
+}

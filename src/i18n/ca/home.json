@@ -60,7 +60,7 @@
   },
   "skills": {
     "title": "Skills i Tecnologies",
-    "subtitle": "Aquestes són les tecnologies i eines que faig servir per donar vida a les idees",
+    "subtitle": "Aquestes són les tecnologies i eines amb les que treballo per donar vida a les idees",
     "categories": {
       "frontend": "Desenvolupament Frontend",
       "backend": "Estat i APIs",
@@ -72,6 +72,18 @@
       "advanced": "Avançat",
       "intermediate": "Intermedi"
     }
+  },
+  "projects": {
+    "title": "Projectes Destacats",
+    "subtitle": "Una selecció d'experiències web interactives que he creat per a clients",
+    "viewAll": "Veure Tots els Projectes",
+    "client": "Client",
+    "technologies": "Tecnologies",
+    "viewProject": "Veure Projecte",
+    "allProjects": "Tots els Projectes",
+    "filterAll": "Tots",
+    "filterByTech": "Filtrar per tecnologia",
+    "projectsCount": "projectes"
   },
   "meta": {
     "title": "Joan Guinart - Desenvolupador Full Stack",

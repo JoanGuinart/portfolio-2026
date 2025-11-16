@@ -73,6 +73,18 @@
       "intermediate": "Intermediate"
     }
   },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "A selection of interactive web experiences I've crafted for clients",
+    "viewAll": "View All Projects",
+    "client": "Client",
+    "technologies": "Technologies",
+    "viewProject": "View Project",
+    "allProjects": "All Projects",
+    "filterAll": "All",
+    "filterByTech": "Filter by technology",
+    "projectsCount": "projects"
+  },
   "meta": {
     "title": "Joan Guinart - Full Stack Developer",
     "description": "Full Stack Developer specializing in modern web technologies"

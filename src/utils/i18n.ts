@@ -9,6 +9,10 @@ import homeEn from '../i18n/en/home.json';
 import homeEs from '../i18n/es/home.json';
 import homeCa from '../i18n/ca/home.json';
 
+import projectsEn from '../i18n/en/projects.json';
+import projectsEs from '../i18n/es/projects.json';
+import projectsCa from '../i18n/ca/projects.json';
+
 // Skills are in home.json, no separate files needed
 
 export const languages = {
@@ -23,15 +27,18 @@ export const defaultLang = 'en';
 export const translations = {
   en: {
     common: commonEn,
-    home: homeEn
+    home: homeEn,
+    projects: projectsEn
   },
   es: {
     common: commonEs,
-    home: homeEs
+    home: homeEs,
+    projects: projectsEs
   },
   ca: {
     common: commonCa,
-    home: homeCa
+    home: homeCa,
+    projects: projectsCa
   }
 } as const;
 
