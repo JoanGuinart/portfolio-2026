@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 import { useTranslations, type Lang } from "../../utils/i18n";
 import projectsData from "../../data/projects.json";
-import Navbar from "../../components/Navbar.astro";
 
 // Solo generar rutas para idiomas con prefijo
 export function getStaticPaths() {
@@ -46,8 +45,6 @@ const allTechnologies = [
   description={t("home.projects.subtitle")}
   lang={lang}
 >
-  <Navbar lang={lang} />
-
   <main class="projects-page">
     <div class="container">
       <!-- Page Header -->

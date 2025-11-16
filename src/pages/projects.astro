@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import { useTranslations, defaultLang, type Lang } from "../utils/i18n";
 import projectsData from "../data/projects.json";
-import Navbar from "../components/Navbar.astro";
 
 const lang: Lang = defaultLang;
 const t = useTranslations(lang);
@@ -32,8 +31,6 @@ const allTechnologies = [
   description={t("home.projects.subtitle")}
   lang={lang}
 >
-  <Navbar lang={lang} />
-
   <main class="projects-page">
     <div class="container">
       <!-- Page Header -->

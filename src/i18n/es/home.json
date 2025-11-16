@@ -85,6 +85,32 @@
     "filterByTech": "Filtrar por tecnología",
     "projectsCount": "proyectos"
   },
+  "contact": {
+    "title": "Trabajemos Juntos",
+    "subtitle": "¿Tienes un proyecto en mente? Conectemos y demos vida a tus ideas",
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "tu.email@ejemplo.com",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+      "send": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado correctamente!",
+      "error": "Algo salió mal. Inténtalo de nuevo."
+    },
+    "info": {
+      "email": "Email",
+      "phone": "Teléfono",
+      "whatsapp": "WhatsApp",
+      "social": "Sígueme"
+    },
+    "cv": {
+      "download": "Descargar CV",
+      "label": "Currículum Vitae"
+    }
+  },
   "meta": {
     "title": "Joan Guinart - Desarrollador Full Stack",
     "description": "Desarrollador Full Stack especializado en tecnologías web modernas"

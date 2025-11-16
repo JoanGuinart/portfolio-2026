@@ -7,13 +7,19 @@ const t = useTranslations(lang);
 // Generate language switcher URLs
 const currentPath = Astro.url.pathname;
 const pathWithoutLang = currentPath.replace(/^\/(es|ca)/, '') || '/';
+
+// Determine if we're on a page other than home
+const isHomePage = currentPath === '/' || currentPath === '/es' || currentPath === '/ca' || currentPath === '/es/' || currentPath === '/ca/';
+
+// Base URL for home page links
+const homeUrl = lang === 'en' ? '/' : `/${lang}`;
 ---
 
 <nav class="navbar">
   <div class="navbar-container">
     <!-- Logo -->
     <div class="navbar-logo">
-      <a href={lang === 'en' ? '/' : `/${lang}`}>
+      <a href={homeUrl}>
         <!-- Logo profesional - JOAN -->
         <div class="logo-container">
           <span class="logo-initial">J</span>
@@ -34,16 +40,16 @@ const pathWithoutLang = currentPath.replace(/^\/(es|ca)/, '') || '/';
     <div class="navbar-menu" id="navbar-menu">
       <ul class="navbar-nav">
         <li class="navbar-item">
-          <a href="#about" class="navbar-link">{t('common.nav.about')}</a>
+          <a href={isHomePage ? '#about' : `${homeUrl}#about`} class="navbar-link">{t('common.nav.about')}</a>
         </li>
         <li class="navbar-item">
-          <a href="#skills" class="navbar-link">{t('common.nav.skills')}</a>
+          <a href={isHomePage ? '#skills' : `${homeUrl}#skills`} class="navbar-link">{t('common.nav.skills')}</a>
         </li>
         <li class="navbar-item">
-          <a href="#projects" class="navbar-link">{t('common.nav.projects')}</a>
+          <a href={isHomePage ? '#projects' : `${homeUrl}#projects`} class="navbar-link">{t('common.nav.projects')}</a>
         </li>
         <li class="navbar-item">
-          <a href="#contact" class="navbar-link">{t('common.nav.contact')}</a>
+          <a href={isHomePage ? '#contact' : `${homeUrl}#contact`} class="navbar-link">{t('common.nav.contact')}</a>
         </li>
       </ul>
 
@@ -462,30 +468,57 @@ const pathWithoutLang = currentPath.replace(/^\/(es|ca)/, '') || '/';
 }
 </style>
 
-<script>
-// Script para manejar el menú móvil y el cambio de idioma
-document.addEventListener('DOMContentLoaded', function() {
-  const toggle = document.getElementById('navbar-toggle');
-  const menu = document.getElementById('navbar-menu');
-  const langButtons = document.querySelectorAll('.lang-btn');
+<script is:inline>
+// Script inline para garantizar que se ejecute siempre
+(function() {
+  function initNavbar() {
+    const toggle = document.getElementById('navbar-toggle');
+    const menu = document.getElementById('navbar-menu');
 
-  // Toggle menú móvil
-  if (toggle && menu) {
-    toggle.addEventListener('click', function() {
+    if (!toggle || !menu) return;
+
+    // Función para toggle del menú
+    function toggleMenu(e) {
+      e.preventDefault();
+      e.stopPropagation();
       menu.classList.toggle('active');
+      toggle.classList.toggle('active');
       document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
-    });
+    }
+
+    // Remover listener anterior si existe
+    toggle.removeEventListener('click', toggleMenu);
+    // Añadir nuevo listener
+    toggle.addEventListener('click', toggleMenu);
 
     // Cerrar menú al hacer clic en un enlace
     const navLinks = menu.querySelectorAll('.navbar-link');
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         menu.classList.remove('active');
+        toggle.classList.remove('active');
+        document.body.style.overflow = 'auto';
       });
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', function(e) {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('active');
+        toggle.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
     });
   }
 
-  // Los enlaces de idioma ya manejan la navegación automáticamente
-  // No necesitamos JavaScript adicional para el cambio de idioma
-});
+  // Ejecutar inmediatamente
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavbar);
+  } else {
+    initNavbar();
+  }
+
+  // También ejecutar en navegación de Astro
+  document.addEventListener('astro:page-load', initNavbar);
+})();
 </script>

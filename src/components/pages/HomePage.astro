@@ -5,6 +5,7 @@ import Portada from "../Portada.astro";
 import Skills from "../Skills.astro";
 import About from "../About.astro";
 import FeaturedProjects from "../FeaturedProjects.astro";
+import Contact from "../Contact.astro";
 
 export interface Props {
   lang: Lang;
@@ -31,6 +32,7 @@ const stats = {
     <About lang={lang} />
     <Skills lang={lang} />
     <FeaturedProjects lang={lang} />
+    <Contact lang={lang} />
   </main>
 </Layout>
 
