@@ -25,9 +25,9 @@ const getProjectDescription = (projectId: string) => {
   return t(`projects.${projectId}` as any);
 };
 
-// Separate featured and non-featured projects
-const featuredProjects = projectsData.projects.filter((p) => p.featured);
-const otherProjects = projectsData.projects.filter((p) => !p.featured);
+// Separate featured and non-featured projects (only published)
+const featuredProjects = projectsData.projects.filter((p) => p.featured && p.published !== false);
+const otherProjects = projectsData.projects.filter((p) => !p.featured && p.published !== false);
 
 // Combine: featured first, then others
 const allProjects = [...featuredProjects, ...otherProjects];
@@ -89,11 +89,19 @@ const allTechnologies = [
                   {project.featured && (
                     <div class="featured-badge">Featured</div>
                   )}
-                  <img
-                    src={`/images/projects/${project.image}`}
-                    alt={project.title}
-                    loading="lazy"
-                  />
+                  {(() => {
+                    const base = project.image.replace('.webp','');
+                    return (
+                      <img
+                        src={`/images/projects/${base}-450.webp`}
+                        srcset={`/images/projects/${base}-450.webp 450w, /images/projects/${base}-900.webp 900w`}
+                        sizes="(max-width: 600px) 100vw, 450px"
+                        alt={project.title}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    );
+                  })()}
                   <div class="project-overlay">
                     <span class="view-project">
                       {t("home.projects.viewProject")}

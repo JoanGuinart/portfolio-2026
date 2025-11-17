@@ -5,9 +5,9 @@
       "title": "Mirades",
       "client": "Ara.cat",
       "technologies": ["Next.js", "Tailwind CSS", "TypeScript"],
-      "image": "mirades.jpg",
+      "image": "mirades.webp",
       "featured": true,
-      "demoUrl": "",
+      "demoUrl": "https://mirades.ara.cat/",
       "year": 2024
     },
     {
@@ -15,19 +15,28 @@
       "title": "Menja sa i sostenible",
       "client": "Generalitat de Catalunya",
       "technologies": ["React", "Tailwind CSS", "SCSS"],
-      "image": "menja-sa-i-sostenible.jpg",
+      "image": "menja-sa-i-sostenible.webp",
       "featured": true,
-      "demoUrl": "",
+      "demoUrl": "https://interactius.ara.cat/generalitat/els-teus-fills-mengen-sa-i-sostenible",
       "year": 2024
     },
     {
       "id": "infonet-fr",
       "title": "Infonet FR",
       "client": "Infonet France",
-      "technologies": ["PHP", "SCSS", "Bootstrap", "Twig", "Symfony", "jQuery", "JavaScript", "TypeScript"],
-      "image": "infonet-fr.jpg",
-      "featured": false,
-      "demoUrl": "",
+      "technologies": [
+        "PHP",
+        "SCSS",
+        "Bootstrap",
+        "Twig",
+        "Symfony",
+        "jQuery",
+        "JavaScript",
+        "TypeScript"
+      ],
+      "image": "infonet-fr.webp",
+      "featured": true,
+      "demoUrl": "https://infonet.fr/",
       "year": 2024
     },
     {
@@ -35,9 +44,9 @@
       "title": "Vins Catalans",
       "client": "Generalitat de Catalunya",
       "technologies": ["Tailwind CSS", "SCSS", "PHP", "JavaScript", "GSAP"],
-      "image": "vins-catalans.jpg",
+      "image": "vins-catalans.webp",
       "featured": true,
-      "demoUrl": "",
+      "demoUrl": "https://interactius.ara.cat/generalitat/catalunya-on-el-vi-es-cultura",
       "year": 2024
     },
     {
@@ -45,9 +54,9 @@
       "title": "Memoria Interactiva 2023",
       "client": "Greenalia",
       "technologies": ["PHP", "SCSS", "JavaScript"],
-      "image": "memoria-interactiva-2023.jpg",
+      "image": "memoria-interactiva-2023.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://greenalia.es/memoria-interactiva/2023/",
       "year": 2023
     },
     {
@@ -55,9 +64,9 @@
       "title": "Petits negocis, grans xifres",
       "client": "CaixaBank",
       "technologies": ["PHP", "JavaScript", "Tailwind CSS"],
-      "image": "petits-negocis-grans-xifres.jpg",
-      "featured": true,
-      "demoUrl": "",
+      "image": "petits-negocis-grans-xifres.webp",
+      "featured": false,
+      "demoUrl": "https://interactius.ara.cat/caixabank/petits-negocis-grans-xifres",
       "year": 2024
     },
     {
@@ -65,9 +74,9 @@
       "title": "Si ets LGTBI tens una xarxa a prop",
       "client": "Generalitat de Catalunya",
       "technologies": ["PHP", "JavaScript", "Tailwind CSS"],
-      "image": "si-ets-lgtbi-tens-una-xarxa-a-prop.jpg",
+      "image": "si-ets-lgtbi-tens-una-xarxa-a-prop.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://interactius.ara.cat/generalitat/si-ets-lgtbi-tens-una-xarxa-a-prop",
       "year": 2023
     },
     {
@@ -75,9 +84,9 @@
       "title": "Telèfon Asil",
       "client": "CCAR",
       "technologies": ["PHP", "JavaScript", "Tailwind CSS"],
-      "image": "telefon-asil.jpg",
+      "image": "telefon-asil.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://interactius.ara.cat/telefon-asil",
       "year": 2023
     },
     {
@@ -85,9 +94,9 @@
       "title": "Saps reciclar bé?",
       "client": "Generalitat de Catalunya",
       "technologies": ["PHP", "JavaScript", "Tailwind CSS"],
-      "image": "saps-reciclar-be.jpg",
+      "image": "saps-reciclar-be.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://interactius.ara.cat/generalitat/saps-reciclar-be",
       "year": 2023
     },
     {
@@ -95,9 +104,9 @@
       "title": "Assetjament escolar",
       "client": "Generalitat de Catalunya",
       "technologies": ["PHP", "JavaScript", "SCSS", "GSAP"],
-      "image": "assetjament-escolar.jpg",
+      "image": "assetjament-escolar.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://interactius.ara.cat/generalitat/assetjament-escolar",
       "year": 2023
     },
     {
@@ -105,9 +114,9 @@
       "title": "Tu també pots ser mecenes cultural",
       "client": "Generalitat de Catalunya",
       "technologies": ["PHP", "JavaScript", "SCSS", "GSAP"],
-      "image": "tu-tambe-pots-ser-mecenes-cultural.jpg",
+      "image": "tu-tambe-pots-ser-mecenes-cultural.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://interactius.ara.cat/generalitat/tu-tambe-pots-ser-mecenes-cultural",
       "year": 2023
     },
     {
@@ -115,9 +124,9 @@
       "title": "Quin és el teu grau de soledat?",
       "client": "Sant Joan de Déu",
       "technologies": ["PHP", "JavaScript", "SCSS", "GSAP"],
-      "image": "quin-es-el-teu-grau-de-soledat.jpg",
+      "image": "quin-es-el-teu-grau-de-soledat.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://interactius.ara.cat/quin-es-el-teu-grau-de-soledat",
       "year": 2023
     },
     {
@@ -125,9 +134,9 @@
       "title": "Presentació CCCB",
       "client": "CCCB",
       "technologies": ["Astro.js", "React", "SCSS", "TypeScript"],
-      "image": "presentacio-cccb.jpg",
+      "image": "presentacio-cccb.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://presentacio.cccb.org/ca/",
       "year": 2024
     },
     {
@@ -135,9 +144,9 @@
       "title": "Així està canviant el Port de Barcelona",
       "client": "Port de Barcelona",
       "technologies": ["PHP", "JavaScript", "SCSS", "GSAP"],
-      "image": "aixi-esta-canviant-el-port-de-barcelona.jpg",
+      "image": "aixi-esta-canviant-el-port-de-barcelona.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://interactius.ara.cat/aixi-esta-canviant-el-port-de-barcelona",
       "year": 2023
     },
     {
@@ -145,9 +154,9 @@
       "title": "Mapa de districtes de Barcelona",
       "client": "Ajuntament de Barcelona",
       "technologies": ["PHP", "JavaScript", "SCSS", "GSAP"],
-      "image": "mapa-de-districtes-de-barcelona.jpg",
-      "featured": false,
-      "demoUrl": "",
+      "image": "mapa-de-districtes-de-barcelona.webp",
+      "featured": true,
+      "demoUrl": "https://interactius.ara.cat/mapa-districtes",
       "year": 2023
     },
     {
@@ -155,9 +164,9 @@
       "title": "Triar carrera",
       "client": "Universitat de Girona",
       "technologies": ["Astro.js", "React", "Tailwind CSS", "SCSS"],
-      "image": "triar-carrera.jpg",
+      "image": "triar-carrera.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://especials.ara.cat/ca/udg/triar-carrera",
       "year": 2024
     },
     {
@@ -165,9 +174,9 @@
       "title": "Ofimòbils",
       "client": "CaixaBank",
       "technologies": ["Astro.js", "React", "Tailwind CSS", "SCSS", "GSAP"],
-      "image": "ofimobils.jpg",
+      "image": "ofimobils.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://especials.ara.cat/ca/caixabank/ofimobils",
       "year": 2024
     },
     {
@@ -175,9 +184,9 @@
       "title": "No perquè passi lluny, deixa de passar",
       "client": "CCAR",
       "technologies": ["Astro.js", "React", "Tailwind CSS", "SCSS", "GSAP"],
-      "image": "no-perque-passi-lluny-deixa-de-passar.jpg",
+      "image": "no-perque-passi-lluny-deixa-de-passar.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://especials.ara.cat/ca/ccar/no-perque-passi-lluny-deixa-de-passar",
       "year": 2024
     },
     {
@@ -185,9 +194,9 @@
       "title": "Cinc remeis a cinc maldecaps",
       "client": "Banc Sabadell",
       "technologies": ["Astro.js", "React", "Tailwind CSS", "SCSS", "GSAP"],
-      "image": "cinc-remeis-a-cinc-maldecaps.jpg",
+      "image": "cinc-remeis-a-cinc-maldecaps.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://especials.ara.cat/ca/banc-sabadell/cinc-remeis-a-cinc-maldecaps",
       "year": 2024
     },
     {
@@ -195,19 +204,19 @@
       "title": "Digues qui ets i et direm què pots estudiar",
       "client": "UOC",
       "technologies": ["Astro.js", "React", "Tailwind CSS", "SCSS", "GSAP"],
-      "image": "digues-qui-ets-i-et-direm-que-pots-estudiar.jpg",
+      "image": "digues-qui-ets-i-et-direm-que-pots-estudiar.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://especials.ara.cat/ca/uoc/diguens-qui-ets-i-et-direm-que-pots-estudiar",
       "year": 2024
     },
     {
       "id": "subscripcions-ara",
       "title": "Subscripcions ARA",
       "client": "ARA",
-      "technologies": ["Next.js", "React", "Tailwind CSS", "SCSS"],
-      "image": "subscripcions-ara.jpg",
+      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "SCSS"],
+      "image": "subscripcions-ara.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://subscripcio.ara.cat/",
       "year": 2024
     },
     {
@@ -215,9 +224,90 @@
       "title": "Mercadona",
       "client": "Mercadona",
       "technologies": ["Astro.js", "React", "SCSS", "GSAP"],
-      "image": "mercadona.jpg",
+      "image": "mercadona.webp",
       "featured": false,
-      "demoUrl": "",
+      "demoUrl": "https://especials.ara.cat/ca/mercadona/productes-que-mercadona-compra-a-catalunya",
+      "year": 2024
+    },
+    {
+      "id": "descobreix-ara",
+      "title": "Descobreix ARA",
+      "client": "ARA",
+      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "SCSS"],
+      "image": "descobreix-ara.webp",
+      "featured": false,
+      "demoUrl": "https://subscripcio.ara.cat/descobreix-ara",
+      "year": 2024
+    },
+    {
+      "id": "quin-tipus-de-veina-ets",
+      "title": "Quin tipus de veïna ets",
+      "client": "Bassols Energia",
+      "technologies": ["Astro.js", "React", "SCSS", "GSAP"],
+      "image": "quin-tipus-de-veina-ets.webp",
+      "featured": false,
+      "demoUrl": "https://especials.ara.cat/ca/bassols-energia/quin-tipus-de-veina-ets",
+      "year": 2024
+    },
+    {
+      "id": "qui-habita-el-fons-mari-del-port-de-barcelona",
+      "title": "Qui habita el fons marí del Port de Barcelona",
+      "client": "Port de Barcelona",
+      "technologies": ["Astro.js", "SCSS", "GSAP"],
+      "image": "qui-habita-el-fons-mari-del-port-de-barcelona.webp",
+      "featured": true,
+      "demoUrl": "https://especials.ara.cat/ca/port-de-barcelona/qui-habita-el-fons-mari-del-port-de-barcelona",
+      "year": 2024
+    },
+    {
+      "id": "recuperar-el-lideratge-economic-de-catalunya",
+      "title": "Recuperar el lideratge econòmic de Catalunya",
+      "client": "Generalitat de Catalunya",
+      "technologies": ["Astro.js", "SCSS", "GSAP"],
+      "image": "recuperar-el-lideratge-economic-de-catalunya.webp",
+      "featured": false,
+      "demoUrl": "https://especials.ara.cat/ca/generalitat/recuperar-el-lideratge-economic-de-catalunya",
+      "year": 2024
+    },
+    {
+      "id": "tot-el-que-has-de-saber-per-evitar-incendis",
+      "title": "Tot el que has de saber per evitar incendis",
+      "client": "Generalitat de Catalunya",
+      "technologies": ["Astro.js", "React", "SCSS", "GSAP"],
+      "image": "tot-el-que-has-de-saber-per-evitar-incendis.webp",
+      "featured": false,
+      "demoUrl": "https://especials.ara.cat/ca/generalitat/tot-el-que-has-de-saber-per-evitar-incendis",
+      "year": 2024,
+      "published": false
+    },
+    {
+      "id": "guia-ajuts-habitatge",
+      "title": "Guia d'ajuts per a l'habitatge",
+      "client": "Generalitat de Catalunya",
+      "technologies": ["Astro.js", "SCSS", "GSAP"],
+      "image": "guia-ajuts-habitatge.webp",
+      "featured": false,
+      "demoUrl": "https://especials.ara.cat/ca/generalitat/guia-ajuts-habitatge",
+      "year": 2024
+    },
+    {
+      "id": "habitatge-jove",
+      "title": "Habitatge jove",
+      "client": "Generalitat de Catalunya",
+      "technologies": ["Astro.js", "SCSS", "GSAP"],
+      "image": "habitatge-jove.webp",
+      "featured": false,
+      "demoUrl": "https://especials.ara.cat/ca/generalitat/habitatge-jove",
+      "year": 2024
+    },
+    {
+      "id": "ciberfraus-gent-gran",
+      "title": "Ciberfraus a la gent gran",
+      "client": "CaixaBank",
+      "technologies": ["Astro.js", "React", "SCSS", "GSAP"],
+      "image": "ciberfraus-gent-gran.webp",
+      "featured": false,
+      "demoUrl": "https://especials.ara.cat/ca/caixabank/ciberfraus-gent-gran",
       "year": 2024
     }
   ]

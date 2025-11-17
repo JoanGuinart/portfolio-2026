@@ -13,7 +13,7 @@ const t = useTranslations(currentLang);
 // Filter featured projects (max 4)
 const featuredProjects = projectsData.projects
   .filter((project) => project.featured)
-  .slice(0, 4);
+  .slice(0, 6);
 
 // Helper function to get project description
 const getProjectDescription = (projectId: string) => {
@@ -33,55 +33,71 @@ const getProjectDescription = (projectId: string) => {
       <!-- Projects Grid -->
       <div class="projects-grid">
         {
-          featuredProjects.map((project) => (
-            <article class="project-card">
-              <a
-                href={project.demoUrl || "#"}
-                target={project.demoUrl ? "_blank" : "_self"}
-                rel={project.demoUrl ? "noopener noreferrer" : ""}
-                class="project-link"
-              >
-                <div class="project-image">
-                  <img
-                    src={`/images/projects/${project.image}`}
-                    alt={project.title}
-                    loading="lazy"
-                  />
-                  <div class="project-overlay">
-                    <span class="view-project">
-                      {t("home.projects.viewProject")}
-                    </span>
-                  </div>
-                </div>
+          featuredProjects.map(
+            (project) =>
+              project.published !== false && (
+                <article class="project-card">
+                  <a
+                    href={project.demoUrl || "#"}
+                    target={project.demoUrl ? "_blank" : "_self"}
+                    rel={project.demoUrl ? "noopener noreferrer" : ""}
+                    class="project-link"
+                  >
+                    <div class="project-image">
+                      {(() => {
+                        const base = project.image.replace(".webp", "");
+                        return (
+                          <img
+                            src={`/images/projects/${base}-450.webp`}
+                            srcset={`/images/projects/${base}-450.webp 450w, /images/projects/${base}-900.webp 900w`}
+                            sizes="(max-width: 600px) 100vw, 450px"
+                            alt={project.title}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        );
+                      })()}
+                      <div class="project-overlay">
+                        <span class="view-project">
+                          {t("home.projects.viewProject")}
+                        </span>
+                      </div>
+                    </div>
 
-                <div class="project-info">
-                  <div class="project-header">
-                    <h3 class="project-title">{project.title}</h3>
-                    <span class="project-client">{project.client}</span>
-                  </div>
+                    <div class="project-info">
+                      <div class="project-header">
+                        <h3 class="project-title">{project.title}</h3>
+                        <span class="project-client">{project.client}</span>
+                      </div>
 
-                  <p class="project-description">{getProjectDescription(project.id)}</p>
+                      <p class="project-description">
+                        {getProjectDescription(project.id)}
+                      </p>
 
-                  <div class="project-technologies">
-                    {project.technologies.slice(0, 4).map((tech) => (
-                      <span class="tech-tag">{tech}</span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span class="tech-more">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </a>
-            </article>
-          ))
+                      <div class="project-technologies">
+                        {project.technologies.slice(0, 4).map((tech) => (
+                          <span class="tech-tag">{tech}</span>
+                        ))}
+                        {project.technologies.length > 4 && (
+                          <span class="tech-more">
+                            +{project.technologies.length - 4}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              )
+          )
         }
       </div>
 
       <!-- View All Button -->
       <div class="projects-cta">
-        <a href={`/${lang === 'en' ? '' : lang + '/'}projects`} class="btn-primary">
+        <a
+          href={`/${lang === "en" ? "" : lang + "/"}projects`}
+          class="btn-primary"
+        >
           {t("home.projects.viewAll")}
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
@@ -89,8 +105,7 @@ const getProjectDescription = (projectId: string) => {
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+              stroke-linejoin="round"></path>
           </svg>
         </a>
       </div>
@@ -185,7 +200,7 @@ const getProjectDescription = (projectId: string) => {
   .project-image {
     position: relative;
     width: 100%;
-    height: 240px;
+    aspect-ratio: 450 / 266;
     overflow: hidden;
     background: var(--color-surface);
 

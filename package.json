@@ -6,12 +6,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "images:convert": "node scripts/convert-images.mjs"
   },
   "dependencies": {
     "astro": "^5.15.5"
   },
   "devDependencies": {
-    "sass": "^1.94.0"
+    "sass": "^1.94.0",
+    "sharp": "^0.33.5"
   }
 }
