@@ -11,6 +11,16 @@
       "year": 2024
     },
     {
+      "id": "chef-assist-ai",
+      "title": "Chef Assist AI",
+      "client": "Personal Project",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Hugging Face"],
+      "image": "chef-assist-ai.webp",
+      "featured": true,
+      "demoUrl": "https://chef-assist-ai.vercel.app/",
+      "year": 2024
+    },
+    {
       "id": "menja-sa-i-sostenible",
       "title": "Menja sa i sostenible",
       "client": "Generalitat de Catalunya",
@@ -213,7 +223,13 @@
       "id": "subscripcions-ara",
       "title": "Subscripcions ARA",
       "client": "ARA",
-      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "SCSS"],
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "SCSS"
+      ],
       "image": "subscripcions-ara.webp",
       "featured": false,
       "demoUrl": "https://subscripcio.ara.cat/",
@@ -233,7 +249,13 @@
       "id": "descobreix-ara",
       "title": "Descobreix ARA",
       "client": "ARA",
-      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "SCSS"],
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "SCSS"
+      ],
       "image": "descobreix-ara.webp",
       "featured": false,
       "demoUrl": "https://subscripcio.ara.cat/descobreix-ara",
