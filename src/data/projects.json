@@ -8,7 +8,7 @@
       "image": "mirades.webp",
       "featured": true,
       "demoUrl": "https://mirades.ara.cat/",
-      "year": 2024
+      "year": 2025
     },
     {
       "id": "chef-assist-ai",
@@ -18,7 +18,17 @@
       "image": "chef-assist-ai.webp",
       "featured": true,
       "demoUrl": "https://chef-assist-ai.vercel.app/",
-      "year": 2024
+      "year": 2025
+    },
+    {
+      "id": "rps-pattern-ai-game",
+      "title": "RPS Pattern AI Game",
+      "client": "Personal Project",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Hugging Face"],
+      "image": "rps-pattern-ai-game.webp",
+      "featured": true,
+      "demoUrl": "https://rps-pattern-ai.vercel.app/",
+      "year": 2025
     },
     {
       "id": "menja-sa-i-sostenible",
@@ -28,7 +38,7 @@
       "image": "menja-sa-i-sostenible.webp",
       "featured": true,
       "demoUrl": "https://interactius.ara.cat/generalitat/els-teus-fills-mengen-sa-i-sostenible",
-      "year": 2024
+      "year": 2025
     },
     {
       "id": "infonet-fr",
@@ -47,7 +57,7 @@
       "image": "infonet-fr.webp",
       "featured": true,
       "demoUrl": "https://infonet.fr/",
-      "year": 2024
+      "year": 2023
     },
     {
       "id": "vins-catalans",
