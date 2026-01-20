@@ -164,8 +164,8 @@ const socialLinks = [
       display: flex;
     }
 
-    // Condensed mobile-first presentation: show only the hero profile block (below 1071px)
-    @media (max-width: 1070px) {
+    // Condensed mobile-first presentation: show only the hero profile block (max-md breakpoint matching navbar)
+    @include max-md {
       position: static;
       top: auto;
       left: auto;

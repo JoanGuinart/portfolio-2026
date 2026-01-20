@@ -72,11 +72,6 @@ const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}
     grid-template-columns: 320px 1fr;
     min-height: calc(100vh - var(--navbar-height));
 
-    // Stack layout earlier on mid screens to avoid overflow when sidebar is present
-    @media (max-width: 1070px) {
-      grid-template-columns: 1fr;
-    }
-
     @include max-md {
       grid-template-columns: 1fr;
     }
