@@ -85,9 +85,31 @@ const buildImageSources = (image: string) => {
                         );
                       })()}
                     <div class="project-overlay">
-                      <span class="view-project">
-                        {t("home.projects.viewProject")}
-                      </span>
+                      <div class="project-overlay-content">
+                        <div class="project-header">
+                          <h3 class="project-title">{project.title}</h3>
+                          <span class="project-client">{project.client}</span>
+                        </div>
+
+                        <p class="project-description">
+                          {getProjectDescription(project.id)}
+                        </p>
+
+                        <div class="project-technologies">
+                          {project.technologies.slice(0, 5).map((tech) => (
+                            <span class="tech-tag">{tech}</span>
+                          ))}
+                          {project.technologies.length > 5 && (
+                            <span class="tech-more">
+                              +{project.technologies.length - 5}
+                            </span>
+                          )}
+                        </div>
+
+                        <span class="view-project">
+                          {t("home.projects.viewProject")}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -219,17 +241,33 @@ const buildImageSources = (image: string) => {
     flex-direction: column;
     height: 100%;
 
-    &:hover {
-      border-color: var(--color-accent-500);
-      box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
-      transform: translateY(-8px);
+    @include max-md {
+      // Mobile: show info below image
+      &:hover {
+        border-color: var(--color-accent-500);
+        box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
+        transform: translateY(-8px);
 
-      .project-overlay {
-        opacity: 1;
+        .project-image img {
+          transform: scale(1.08);
+        }
       }
+    }
 
-      .project-image img {
-        transform: scale(1.08);
+    @include md {
+      // Desktop: show only image, overlay on hover
+      &:hover {
+        border-color: var(--color-accent-500);
+        box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
+        transform: translateY(-8px);
+
+        .project-overlay {
+          opacity: 1;
+        }
+
+        .project-image img {
+          transform: scale(1.08);
+        }
       }
     }
   }
@@ -245,7 +283,7 @@ const buildImageSources = (image: string) => {
   .project-image {
     position: relative;
     width: 100%;
-    aspect-ratio: 450 / 266;
+    aspect-ratio: 450 / 350;
     overflow: hidden;
     background: var(--color-surface);
 
@@ -260,12 +298,30 @@ const buildImageSources = (image: string) => {
   .project-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(6, 78, 59, 0.9);
+    background: rgba(6, 78, 59, 0.95);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity var(--transition-base);
+    padding: var(--space-4);
+    box-sizing: border-box;
+
+    @include max-md {
+      // Mobile: hide overlay
+      display: none;
+    }
+  }
+
+  .project-overlay-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    text-align: center;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
   }
 
   .view-project {
@@ -280,6 +336,16 @@ const buildImageSources = (image: string) => {
     flex-direction: column;
     gap: var(--space-4);
     flex: 1;
+
+    @include max-md {
+      // Mobile: show info
+      display: flex;
+    }
+
+    @include md {
+      // Desktop: hide info (shown in overlay)
+      display: none;
+    }
   }
 
   .project-header {
@@ -289,7 +355,7 @@ const buildImageSources = (image: string) => {
   }
 
   .project-title {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     margin: 0;
@@ -302,7 +368,7 @@ const buildImageSources = (image: string) => {
   }
 
   .project-description {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
     margin: 0;
