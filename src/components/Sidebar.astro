@@ -1,0 +1,405 @@
+---
+import { useTranslations, type Lang } from "../utils/i18n";
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang } = Astro.props;
+const currentLang = lang || "en";
+const t = useTranslations(currentLang);
+
+const contactLinks = [
+  {
+    label: "Email",
+    href: "mailto:guinartcasasjoan@gmail.com",
+    icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="m20 6-8 5-8-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+  },
+  {
+    label: "WhatsApp",
+    href: "https://wa.me/34617056810",
+    icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>',
+  },
+];
+
+const socialLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/JoanGuinart",
+    icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>',
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/joan-guinart-casas/",
+    icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.474-2.229-1.661-2.229-1.011 0-1.612.678-1.876 1.334-.096.231-.12.554-.12.877v5.587h-3.546v-9.131h3.546v1.25c.39-.6 1.087-1.454 2.64-1.454 1.929 0 3.376 1.261 3.376 3.975v5.36zM5.337 9.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 10.019H3.555V9.321h3.564v10.131zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path></svg>',
+  },
+];
+---
+
+<aside class="sidebar">
+  <!-- Profile Section -->
+  <div class="sidebar-section profile-section">
+    <div class="profile-image">
+      <div class="profile-placeholder">JG</div>
+    </div>
+    <h1 class="profile-name">{t("home.hero.name")}</h1>
+    <p class="profile-role">{t("home.hero.role")}</p>
+    <p class="profile-tagline">{t("home.hero.tagline")}</p>
+
+    <div class="availability-badge">
+      <span class="status-dot"></span>
+      <span>{t("home.hero.availability")}</span>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="sidebar-section about-section">
+    <h3 class="sidebar-title">{t("home.about.title")}</h3>
+    <p class="sidebar-text">{t("home.about.subtitle")}</p>
+    <p class="sidebar-description">{t("home.hero.description")}</p>
+  </div>
+
+  <!-- Contact Me Section -->
+  <div class="sidebar-section contact-section">
+    <h3 class="sidebar-title">{t("home.contact.title")}</h3>
+    <div class="contact-links">
+      {
+        contactLinks.map((link) => (
+          <a
+            href={link.href}
+            class="contact-link"
+            title={link.label}
+            target={link.label === "WhatsApp" ? "_blank" : undefined}
+            rel={link.label === "WhatsApp" ? "noopener noreferrer" : undefined}
+          >
+            <span class="icon" set:html={link.icon} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Follow Me Section -->
+  <div class="sidebar-section social-section">
+    <h3 class="sidebar-title">{t("home.contact.info.social")}</h3>
+    <div class="contact-links">
+      {
+        socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+            title={link.label}
+          >
+            <span class="icon" set:html={link.icon} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- CV Download -->
+  <div class="sidebar-section cta-section">
+    <a href="/cv/CV_Joan_Guinart_2026.pdf" download class="btn-sidebar-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+        <path
+          d="M7 10L12 15L17 10"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+        <path
+          d="M12 15V3"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+      Download CV
+    </a>
+  </div>
+</aside>
+
+<style lang="scss">
+  @use "../_mediaqueries.scss" as *;
+  @use "../styles/variables" as *;
+
+  .sidebar {
+    position: sticky;
+    top: var(--navbar-height);
+    height: calc(100vh - var(--navbar-height) - (var(--space-4) * 2));
+    padding: var(--space-4) var(--space-4);
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+
+    @include max-md {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 280px;
+      height: 100vh;
+      border-right: 1px solid var(--color-border);
+      z-index: 100;
+      transition: left var(--transition-base);
+      padding: calc(var(--navbar-height) + var(--space-6)) var(--space-6)
+        var(--space-6);
+
+      &.open {
+        left: 0;
+      }
+    }
+
+    @include md {
+      display: flex;
+    }
+
+    // Condensed mobile-first presentation: show only the hero profile block (below 1071px)
+    @media (max-width: 1070px) {
+      position: static;
+      top: auto;
+      left: auto;
+      width: 100%;
+      height: auto;
+      padding: calc(var(--space-6) + var(--navbar-height)) var(--space-5)
+        var(--space-6);
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-surface);
+      overflow-y: visible;
+      overflow-x: hidden;
+      align-items: center;
+      margin: 0 auto;
+      box-sizing: border-box;
+      margin-top: 0;
+
+      // Hide all sections except the profile intro
+      .sidebar-section:not(.profile-section) {
+        display: none;
+      }
+
+      .profile-section {
+        align-items: center;
+        gap: var(--space-3);
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .profile-image {
+        margin: 0;
+      }
+
+      .profile-name {
+        font-size: var(--font-size-xl);
+        text-align: center;
+      }
+
+      .profile-role,
+      .profile-tagline,
+      .availability-badge {
+        text-align: center;
+      }
+    }
+  }
+
+  .sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .profile-section {
+    text-align: center;
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .profile-image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-2);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 3px solid var(--color-primary-600);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-600),
+      var(--color-accent-600)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .profile-placeholder {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: white;
+  }
+
+  .profile-name {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-1);
+  }
+
+  .profile-role {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent-500);
+    margin-bottom: var(--space-2);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .profile-tagline {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+    line-height: var(--line-height-normal);
+  }
+
+  .availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-full);
+    margin: 0 auto;
+    font-size: var(--font-size-xs);
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: var(--color-accent-500);
+      animation: pulse 2s infinite;
+    }
+  }
+
+  .sidebar-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-2);
+  }
+
+  .sidebar-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .sidebar-description {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: var(--color-primary-900);
+      border-color: var(--color-primary-600);
+    }
+  }
+
+  .skill-icon {
+    font-size: var(--font-size-lg);
+  }
+
+  .skill-name {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+  }
+
+  .contact-links {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: var(--color-primary-600);
+      border-color: var(--color-primary-600);
+      color: white;
+    }
+  }
+
+  .cta-section {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
+  }
+
+  .btn-sidebar-primary {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-accent-600);
+    color: white;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: var(--color-accent-700);
+      transform: translateY(-2px);
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+</style>

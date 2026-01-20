@@ -1,25 +1,32 @@
 ---
-import { getLangFromUrl, useTranslations, languages } from '../utils/i18n';
+import { getLangFromUrl, useTranslations, languages } from "../utils/i18n";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Generate language switcher URLs
 const currentPath = Astro.url.pathname;
-const pathWithoutLang = currentPath.replace(/^\/(es|ca)/, '') || '/';
+const pathWithoutLang = currentPath.replace(/^\/(es|ca)/, "") || "/";
 
-// Determine if we're on a page other than home
-const isHomePage = currentPath === '/' || currentPath === '/es' || currentPath === '/ca' || currentPath === '/es/' || currentPath === '/ca/';
+const isHomePage = ["/", "/es", "/ca", "/es/", "/ca/"].includes(currentPath);
+const homeUrl = lang === "en" ? "/" : `/${lang}`;
 
-// Base URL for home page links
-const homeUrl = lang === 'en' ? '/' : `/${lang}`;
+const navLinks = [
+  { href: "#projects", label: t("common.nav.projects") },
+  { href: "#about", label: t("common.nav.about") },
+  { href: "#skills", label: t("common.nav.skills") },
+  { href: "#contact", label: t("common.nav.contact") },
+];
 ---
 
 <nav class="navbar">
   <div class="navbar-container">
     <!-- Logo -->
     <div class="navbar-logo">
-      <a href={homeUrl}>
+      <a
+        href={homeUrl}
+        id="logo-link"
+        onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
+      >
         <!-- Logo profesional - JOAN -->
         <div class="logo-container">
           <span class="logo-initial">J</span>
@@ -30,7 +37,11 @@ const homeUrl = lang === 'en' ? '/' : `/${lang}`;
     </div>
 
     <!-- Hamburger menu para móvil -->
-    <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggle"
+      id="navbar-toggle"
+      aria-label="Toggle navigation"
+    >
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
@@ -39,402 +50,364 @@ const homeUrl = lang === 'en' ? '/' : `/${lang}`;
     <!-- Navigation Menu -->
     <div class="navbar-menu" id="navbar-menu">
       <ul class="navbar-nav">
-        <li class="navbar-item">
-          <a href={isHomePage ? '#about' : `${homeUrl}#about`} class="navbar-link">{t('common.nav.about')}</a>
-        </li>
-        <li class="navbar-item">
-          <a href={isHomePage ? '#skills' : `${homeUrl}#skills`} class="navbar-link">{t('common.nav.skills')}</a>
-        </li>
-        <li class="navbar-item">
-          <a href={isHomePage ? '#projects' : `${homeUrl}#projects`} class="navbar-link">{t('common.nav.projects')}</a>
-        </li>
-        <li class="navbar-item">
-          <a href={isHomePage ? '#contact' : `${homeUrl}#contact`} class="navbar-link">{t('common.nav.contact')}</a>
-        </li>
+        {
+          navLinks.map((link) => {
+            const target = isHomePage ? link.href : `${homeUrl}${link.href}`;
+            return (
+              <li class="navbar-item">
+                <a href={target} class="navbar-link">
+                  {link.label}
+                </a>
+              </li>
+            );
+          })
+        }
       </ul>
 
       <!-- Language Selector -->
       <div class="language-selector">
-        {Object.entries(languages).map(([langCode, langName]) => {
-          let href;
-          if (langCode === 'en') {
-            // English uses root path
-            href = pathWithoutLang;
-          } else {
-            // Other languages use prefix
-            href = `/${langCode}${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
-          }
-          
-          return (
-            <a 
-              href={href}
-              class={`lang-btn ${lang === langCode ? 'active' : ''}`}
-              data-lang={langCode}
-            >
-              {langCode.toUpperCase()}
-            </a>
-          );
-        })}
+        {
+          Object.entries(languages).map(([langCode, langName]) => {
+            let href;
+            if (langCode === "en") {
+              // English uses root path
+              href = pathWithoutLang;
+            } else {
+              // Other languages use prefix
+              href = `/${langCode}${pathWithoutLang === "/" ? "" : pathWithoutLang}`;
+            }
+
+            return (
+              <a
+                href={href}
+                class={`lang-btn ${lang === langCode ? "active" : ""}`}
+                data-lang={langCode}
+              >
+                {langCode.toUpperCase()}
+              </a>
+            );
+          })
+        }
       </div>
     </div>
   </div>
 </nav>
 
 <style lang="scss">
-@use "../_mediaqueries.scss" as *;
-@use "../styles/variables" as *;
+  @use "../_mediaqueries.scss" as *;
+  @use "../styles/variables" as *;
 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--navbar-height);
-  background: var(--navbar-background);
-  backdrop-filter: var(--navbar-backdrop-blur);
-  border-bottom: 1px solid var(--navbar-border);
-  z-index: var(--z-fixed);
-  transition: all var(--transition-base);
-  
-  // Modern glass morphism effect
-  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  
-  // Enhanced scroll behavior
-  &.scrolled {
-    box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    background: var(--color-surface-glass);
-  }
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navbar-height);
+    background: var(--navbar-background);
+    backdrop-filter: var(--navbar-backdrop-blur);
+    border-bottom: 1px solid var(--navbar-border);
+    z-index: var(--z-fixed);
+    transition: all var(--transition-base);
 
-  &-container {
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: 0 var(--space-4);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
+    // Modern glass morphism effect
+    box-shadow:
+      var(--shadow-sm),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
 
-    @include md {
-      padding: 0 var(--space-6);
+    // Enhanced scroll behavior
+    &.scrolled {
+      box-shadow:
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      background: var(--color-surface-glass);
     }
-  }
 
-  &-logo {
-    a {
-      text-decoration: none;
-      display: inline-block;
-      transition: all var(--transition-base);
+    &-container {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      align-items: center;
+      height: 100%;
+      position: relative;
 
-      &:hover {
-        transform: translateY(-1px);
-        
-        .logo-initial {
-          transform: scale(1.03);
-          font-variation-settings: "wght" 900; // Más peso en hover
-          margin-right: 5px;
-          
-          &::after {
-            opacity: 1;
-            transform: scaleX(1);
+      @include max-md {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 var(--space-4);
+      }
+    }
+
+    &-logo {
+      display: flex;
+      justify-content: center;
+      padding: 0 var(--space-4);
+      border-right: 1px solid var(--color-border);
+
+      @include max-md {
+        flex: 1;
+        justify-content: center;
+        border-right: none;
+        padding-left: 0;
+      }
+
+      a {
+        text-decoration: none;
+        display: inline-block;
+        transition: all var(--transition-base);
+
+        &:hover {
+          transform: translateY(-1px);
+
+          .logo-initial {
+            transform: scale(1.03);
+            font-variation-settings: "wght" 900; // Más peso en hover
+            margin-right: 5px;
+
+            &::after {
+              opacity: 1;
+              transform: scaleX(1);
+            }
+          }
+
+          .logo-text {
+            color: var(--color-primary-300);
+            letter-spacing: 0.01em; // Se expande ligeramente
+            font-variation-settings: "wght" 650; // Peso ligeramente mayor
+          }
+
+          .logo-dot {
+            color: var(--color-accent-400);
+            transform: scale(1.15) translateY(-1px);
+            text-shadow: 0 0 12px var(--color-accent-400);
           }
         }
 
+        &:focus-visible {
+          outline: 2px solid var(--color-primary-500);
+          outline-offset: 2px;
+          border-radius: var(--radius-sm);
+        }
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: baseline;
+        gap: 0;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        font-feature-settings: "ss02", "ss03", "cv01", "cv03";
+        font-optical-sizing: auto;
+      }
+
+      .logo-initial {
+        font-size: var(--font-size-2xl);
+        font-weight: 800; // Extra bold para más impacto
+        background: var(--gradient-text);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.02em; // Más apretado para look moderno
+        transition: all var(--transition-base);
+        position: relative;
+        font-variation-settings: "wght" 800;
+
+        // Efecto moderno de destacado
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -1px;
+          left: -2px;
+          right: -2px;
+          height: 3px;
+          background: var(--gradient-primary);
+          border-radius: var(--radius-full);
+          opacity: 0;
+          transform: scaleX(0);
+          transition: all var(--transition-base);
+        }
+      }
+
+      .logo-text {
+        font-size: var(--font-size-2xl);
+        font-weight: 600; // Semibold elegante
+        color: var(--color-text-primary);
+        letter-spacing: -0.01em; // Slightly condensed
+        transition: all var(--transition-base);
+        margin-left: -3px; // Conexión visual más estrecha
+        font-variation-settings: "wght" 600;
+        text-rendering: optimizeLegibility;
+      }
+
+      .logo-dot {
+        font-size: var(--font-size-3xl);
+        font-weight: 900; // Máximo peso para el punto
+        color: var(--color-accent-500);
+        line-height: 0.6;
+        margin-left: 2px;
+        transition: all var(--transition-base);
+        font-family: "Inter", sans-serif;
+        font-feature-settings: "zero";
+      }
+
+      @include md {
+        .logo-initial {
+          font-size: var(--font-size-3xl);
+          font-variation-settings: "wght" 850;
+        }
+
         .logo-text {
-          color: var(--color-primary-300);
-          letter-spacing: 0.01em; // Se expande ligeramente
-          font-variation-settings: "wght" 650; // Peso ligeramente mayor
+          font-size: var(--font-size-3xl);
+          font-variation-settings: "wght" 650;
+          margin-left: -4px;
+        }
+        margin-left: auto;
+
+        .logo-dot {
+          font-size: var(--font-size-4xl);
+          margin-left: 1px;
+        }
+      }
+
+      @include xl {
+        .logo-initial {
+          font-size: var(--font-size-4xl);
+          font-variation-settings: "wght" 900;
+        }
+
+        .logo-text {
+          font-size: var(--font-size-4xl);
+          font-variation-settings: "wght" 700;
+          margin-left: -5px;
         }
 
         .logo-dot {
-          color: var(--color-accent-400);
-          transform: scale(1.15) translateY(-1px);
-          text-shadow: 0 0 12px var(--color-accent-400);
+          font-size: 3.5rem; // Tamaño personalizado para mejor proporción
+          margin-left: 0;
         }
+      }
+    }
+
+    // Hamburger menu para móvil
+    &-toggle {
+      display: flex;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-2);
+      gap: var(--space-1);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-base);
+      position: absolute;
+      right: var(--space-4);
+      top: 50%;
+      transform: translateY(-50%);
+
+      &:hover {
+        background-color: var(--color-interactive-hover);
+        transform: translateY(-50%) scale(1.05);
+        box-shadow: var(--shadow-sm);
       }
 
       &:focus-visible {
         outline: 2px solid var(--color-primary-500);
         outline-offset: 2px;
-        border-radius: var(--radius-sm);
       }
-    }
 
-    .logo-container {
-      display: flex;
-      align-items: baseline;
-      gap: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-feature-settings: "ss02", "ss03", "cv01", "cv03";
-      font-optical-sizing: auto;
-    }
+      @include md {
+        display: none;
+      }
 
-    .logo-initial {
-      font-size: var(--font-size-2xl);
-      font-weight: 800; // Extra bold para más impacto
-      background: var(--gradient-text);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -0.02em; // Más apretado para look moderno
-      transition: all var(--transition-base);
-      position: relative;
-      font-variation-settings: "wght" 800;
-      
-      // Efecto moderno de destacado
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -1px;
-        left: -2px;
-        right: -2px;
-        height: 3px;
-        background: var(--gradient-primary);
+      .hamburger-line {
+        width: 24px;
+        height: 2px;
+        background-color: var(--color-text-primary);
         border-radius: var(--radius-full);
-        opacity: 0;
-        transform: scaleX(0);
         transition: all var(--transition-base);
       }
     }
 
-    .logo-text {
-      font-size: var(--font-size-2xl);
-      font-weight: 600; // Semibold elegante
-      color: var(--color-text-primary);
-      letter-spacing: -0.01em; // Slightly condensed
-      transition: all var(--transition-base);
-      margin-left: -3px; // Conexión visual más estrecha
-      font-variation-settings: "wght" 600;
-      text-rendering: optimizeLegibility;
-    }
-
-    .logo-dot {
-      font-size: var(--font-size-3xl);
-      font-weight: 900; // Máximo peso para el punto
-      color: var(--color-accent-500);
-      line-height: 0.6;
-      margin-left: 2px;
-      transition: all var(--transition-base);
-      font-family: 'Inter', sans-serif;
-      font-feature-settings: "zero";
-    }
-
-    @include md {
-      .logo-initial {
-        font-size: var(--font-size-3xl);
-        font-variation-settings: "wght" 850;
-      }
-      
-      .logo-text {
-        font-size: var(--font-size-3xl);
-        font-variation-settings: "wght" 650;
-        margin-left: -4px;
-      }
-
-      .logo-dot {
-        font-size: var(--font-size-4xl);
-        margin-left: 1px;
-      }
-    }
-
-    @include xl {
-      .logo-initial {
-        font-size: var(--font-size-4xl);
-        font-variation-settings: "wght" 900;
-      }
-      
-      .logo-text {
-        font-size: var(--font-size-4xl);
-        font-variation-settings: "wght" 700;
-        margin-left: -5px;
-      }
-
-      .logo-dot {
-        font-size: 3.5rem; // Tamaño personalizado para mejor proporción
-        margin-left: 0;
-      }
-    }
-  }
-
-  // Hamburger menu para móvil
-  &-toggle {
-    display: flex;
-    flex-direction: column;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: var(--space-2);
-    gap: var(--space-1);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-base);
-
-    &:hover {
-      background-color: var(--color-interactive-hover);
-      transform: scale(1.05);
-      box-shadow: var(--shadow-sm);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-primary-500);
-      outline-offset: 2px;
-    }
-
-    @include md {
-      display: none;
-    }
-
-    .hamburger-line {
-      width: 24px;
-      height: 2px;
-      background-color: var(--color-text-primary);
-      border-radius: var(--radius-full);
-      transition: all var(--transition-base);
-    }
-  }
-
-  // Menu principal
-  &-menu {
-    position: fixed;
-    top: var(--navbar-height);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - var(--navbar-height));
-    background: var(--mobile-menu-background);
-    backdrop-filter: var(--navbar-backdrop-blur);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: var(--space-8);
-    transform: translateX(-100%);
-    transition: transform var(--transition-slow);
-    gap: var(--space-6);
-    box-shadow: var(--shadow-lg);
-
-    &.active {
-      transform: translateX(0);
-    }
-
-    @include md {
-      position: static;
-      height: auto;
-      width: auto;
-      background: none;
-      flex-direction: row;
-      padding: 0;
-      transform: none;
-      gap: var(--space-8);
+    // Menu principal
+    &-menu {
+      position: fixed;
+      top: var(--navbar-height);
+      left: 0;
+      width: 100%;
+      height: calc(100vh - var(--navbar-height));
+      background: var(--navbar-background);
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      box-shadow: none;
-    }
-  }
-
-  &-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-
-    @include md {
-      flex-direction: row;
+      justify-content: flex-start;
+      padding-top: var(--space-8);
+      transform: translateX(-100%);
+      transition: transform var(--transition-slow);
       gap: var(--space-6);
-    }
-  }
+      box-shadow: var(--shadow-lg);
+      box-sizing: border-box;
 
-  &-item {
-    text-align: center;
+      &.active {
+        transform: translateX(0);
+      }
 
-    @include md {
-      text-align: left;
-    }
-  }
-
-  &-link {
-    text-decoration: none;
-    color: var(--color-text-primary);
-    font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-lg);
-    font-family: var(--font-family-sans);
-    padding: var(--space-3) var(--space-4);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-slow);
-    position: relative;
-    display: inline-block;
-
-    &:hover {
-      color: var(--color-primary-600);
-      background-color: var(--color-primary-50);
-      transform: translateY(-1px);
+      @include md {
+        position: static;
+        height: auto;
+        width: 100%;
+        background: none;
+        flex-direction: row;
+        padding: 0 var(--space-6);
+        transform: none;
+        gap: var(--space-8);
+        align-items: center;
+        box-shadow: none;
+      }
     }
 
-    &:focus-visible {
-      outline: 2px solid var(--color-primary-500);
-      outline-offset: 2px;
-    }
-
-    // Subtle underline animation
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: var(--space-1);
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background-color: var(--color-primary-500);
-      transition: all var(--transition-base);
-      transform: translateX(-50%);
-    }
-
-    &:hover::after {
-      width: 70%;
-    }
-
-    @include md {
-      font-size: var(--font-size-base);
-      padding: var(--space-2) var(--space-3);
-    }
-  }
-
-  // Language Selector
-  .language-selector {
-    display: flex;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
-    padding: var(--space-2);
-    background-color: var(--color-neutral-50);
-    border-radius: var(--radius-lg);
-
-    @include md {
-      margin-top: 0;
-      background-color: transparent;
+    &-nav {
+      list-style: none;
+      margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+
+      @include md {
+        flex-direction: row;
+        gap: var(--space-6);
+      }
     }
 
-    .lang-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    &-item {
+      text-align: center;
+
+      @include md {
+        text-align: left;
+      }
+    }
+
+    &-link {
       text-decoration: none;
-      background-color: transparent;
-      border: 2px solid var(--color-neutral-200);
-      color: var(--color-text-secondary);
+      color: var(--color-text-primary);
       font-weight: var(--font-weight-medium);
-      font-size: var(--font-size-sm);
+      font-size: var(--font-size-lg);
       font-family: var(--font-family-sans);
-      padding: var(--space-2) var(--space-3);
+      padding: var(--space-3) var(--space-4);
       border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all var(--transition-base);
-      min-width: 44px; // Accessibility: minimum touch target
-      letter-spacing: var(--letter-spacing-wide);
+      transition: all var(--transition-slow);
+      position: relative;
+      display: inline-block;
 
       &:hover {
         color: var(--color-primary-600);
-        border-color: var(--color-primary-300);
         background-color: var(--color-primary-50);
         transform: translateY(-1px);
-        box-shadow: var(--shadow-sm);
       }
 
       &:focus-visible {
@@ -442,83 +415,156 @@ const homeUrl = lang === 'en' ? '/' : `/${lang}`;
         outline-offset: 2px;
       }
 
-      &.active {
-        color: var(--color-primary-700);
-        background-color: var(--color-primary-100);
-        border-color: var(--color-primary-400);
-        font-weight: var(--font-weight-semibold);
-        box-shadow: var(--shadow-sm);
+      // Subtle underline animation
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: var(--space-1);
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-primary-500);
+        transition: all var(--transition-base);
+        transform: translateX(-50%);
       }
-    }
-  }
-}
 
-// Dark theme support (uses CSS custom properties automatically)
-@media (prefers-color-scheme: dark) {
-  .navbar {
-    // The CSS custom properties in _variables.scss will handle dark mode
-    // Additional dark-specific overrides can be added here if needed
-    
-    .language-selector {
+      &:hover::after {
+        width: 70%;
+      }
+
       @include md {
+        font-size: var(--font-size-base);
+        padding: var(--space-2) var(--space-3);
+      }
+    }
+
+    // Language Selector
+    .language-selector {
+      display: flex;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+      padding: var(--space-2);
+      background-color: var(--color-neutral-50);
+      border-radius: var(--radius-lg);
+      justify-content: center;
+      @include md {
+        margin-top: 0;
         background-color: transparent;
+        padding: 0;
+        margin-left: auto;
+        justify-content: flex-end;
+      }
+
+      .lang-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background-color: transparent;
+        border: 2px solid var(--color-neutral-200);
+        color: var(--color-text-secondary);
+        font-weight: var(--font-weight-medium);
+        font-size: var(--font-size-sm);
+        font-family: var(--font-family-sans);
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition: all var(--transition-base);
+        min-width: 44px; // Accessibility: minimum touch target
+        letter-spacing: var(--letter-spacing-wide);
+
+        &:hover {
+          color: var(--color-primary-600);
+          border-color: var(--color-primary-300);
+          background-color: var(--color-primary-50);
+          transform: translateY(-1px);
+          box-shadow: var(--shadow-sm);
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--color-primary-500);
+          outline-offset: 2px;
+        }
+
+        &.active {
+          color: var(--color-primary-700);
+          background-color: var(--color-primary-100);
+          border-color: var(--color-primary-400);
+          font-weight: var(--font-weight-semibold);
+          box-shadow: var(--shadow-sm);
+        }
       }
     }
   }
-}
+
+  // Dark theme support (uses CSS custom properties automatically)
+  @media (prefers-color-scheme: dark) {
+    .navbar {
+      // The CSS custom properties in _variables.scss will handle dark mode
+      // Additional dark-specific overrides can be added here if needed
+
+      .language-selector {
+        @include md {
+          background-color: transparent;
+        }
+      }
+    }
+  }
 </style>
 
 <script is:inline>
-// Script inline para garantizar que se ejecute siempre
-(function() {
-  function initNavbar() {
-    const toggle = document.getElementById('navbar-toggle');
-    const menu = document.getElementById('navbar-menu');
+  // Script inline para garantizar que se ejecute siempre
+  (function () {
+    function initNavbar() {
+      const toggle = document.getElementById("navbar-toggle");
+      const menu = document.getElementById("navbar-menu");
 
-    if (!toggle || !menu) return;
+      if (!toggle || !menu) return;
 
-    // Función para toggle del menú
-    function toggleMenu(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      menu.classList.toggle('active');
-      toggle.classList.toggle('active');
-      document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+      // Función para toggle del menú
+      function toggleMenu(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        menu.classList.toggle("active");
+        toggle.classList.toggle("active");
+        document.body.style.overflow = menu.classList.contains("active")
+          ? "hidden"
+          : "auto";
+      }
+
+      // Remover listener anterior si existe
+      toggle.removeEventListener("click", toggleMenu);
+      // Añadir nuevo listener
+      toggle.addEventListener("click", toggleMenu);
+
+      // Cerrar menú al hacer clic en un enlace
+      const navLinks = menu.querySelectorAll(".navbar-link");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("active");
+          toggle.classList.remove("active");
+          document.body.style.overflow = "auto";
+        });
+      });
+
+      // Cerrar menú al hacer clic fuera
+      document.addEventListener("click", function (e) {
+        if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+          menu.classList.remove("active");
+          toggle.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      });
     }
 
-    // Remover listener anterior si existe
-    toggle.removeEventListener('click', toggleMenu);
-    // Añadir nuevo listener
-    toggle.addEventListener('click', toggleMenu);
+    // Ejecutar inmediatamente
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initNavbar);
+    } else {
+      initNavbar();
+    }
 
-    // Cerrar menú al hacer clic en un enlace
-    const navLinks = menu.querySelectorAll('.navbar-link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('active');
-        toggle.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      });
-    });
-
-    // Cerrar menú al hacer clic fuera
-    document.addEventListener('click', function(e) {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('active');
-        toggle.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
-    });
-  }
-
-  // Ejecutar inmediatamente
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNavbar);
-  } else {
-    initNavbar();
-  }
-
-  // También ejecutar en navegación de Astro
-  document.addEventListener('astro:page-load', initNavbar);
-})();
+    // También ejecutar en navegación de Astro
+    document.addEventListener("astro:page-load", initNavbar);
+  })();
 </script>

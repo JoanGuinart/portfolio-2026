@@ -5,8 +5,10 @@ export interface Props {
 
 const { lang } = Astro.props;
 
-import { getLangFromUrl, useTranslations } from "../utils/i18n";
+import { useTranslations } from "../utils/i18n";
 const t = useTranslations(lang);
+
+const heroTech = ["React", "TypeScript", "Next.js", "Astro", "Tailwind"];
 ---
 
 <section class="hero">
@@ -60,11 +62,9 @@ const t = useTranslations(lang);
         <p class="tech-label">{t("home.hero.techLabel")}</p>
         <div class="tech-preview">
           <div class="tech-icons">
-            <span class="tech-icon featured">React</span>
-            <span class="tech-icon featured">TypeScript</span>
-            <span class="tech-icon featured">Next.js</span>
-            <span class="tech-icon featured">Astro</span>
-            <span class="tech-icon featured">Tailwind</span>
+            {heroTech.map((tech) => (
+              <span class="tech-icon featured">{tech}</span>
+            ))}
           </div>
           <a href="#skills" class="tech-more">
             {t("home.hero.viewAllSkills")}

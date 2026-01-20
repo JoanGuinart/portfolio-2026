@@ -1,0 +1,88 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Sidebar from "../components/Sidebar.astro";
+import type { Lang } from "../utils/i18n";
+
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: Lang;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Joan Guinart Portfolio",
+  lang = "en",
+  ogImage = "/og-image.jpg",
+} = Astro.props;
+
+const siteUrl = "https://joanguinart.dev";
+const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOgImage} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={fullOgImage} />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <Navbar />
+    <div class="app-layout">
+      <Sidebar lang={lang} />
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style lang="scss">
+  @use "../styles/global" as *;
+  @use "../styles/variables" as *;
+  @use "../_mediaqueries.scss" as *;
+
+  .app-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: calc(100vh - var(--navbar-height));
+
+    // Stack layout earlier on mid screens to avoid overflow when sidebar is present
+    @media (max-width: 1070px) {
+      grid-template-columns: 1fr;
+    }
+
+    @include max-md {
+      grid-template-columns: 1fr;
+    }
+
+    @include md {
+      grid-template-columns: 320px 1fr;
+    }
+  }
+</style>

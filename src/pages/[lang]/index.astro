@@ -1,5 +1,5 @@
 ---
-import HomePage from "../../components/pages/HomePage.astro";
+import Home from "../../components/Home.astro";
 import { type Lang } from '../../utils/i18n';
 
 // Solo generar rutas para idiomas con prefijo
@@ -19,4 +19,4 @@ export interface Props {
 const { lang } = Astro.params;
 ---
 
-<HomePage lang={lang as Lang} />
+<Home lang={lang as Lang} />

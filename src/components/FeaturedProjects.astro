@@ -10,14 +10,18 @@ const { lang } = Astro.props;
 const currentLang = lang || "en";
 const t = useTranslations(currentLang);
 
-// Filter featured projects (max 4)
 const featuredProjects = projectsData.projects
   .filter((project) => project.featured)
   .slice(0, 6);
 
-// Helper function to get project description
-const getProjectDescription = (projectId: string) => {
-  return t(`projects.${projectId}` as any);
+const getProjectDescription = (projectId: string) => t(`projects.${projectId}` as any);
+
+const buildImageSources = (image: string) => {
+  const base = image.replace(".webp", "");
+  return {
+    src: `/images/projects/${base}-450.webp`,
+    srcset: `/images/projects/${base}-450.webp 450w, /images/projects/${base}-900.webp 900w`
+  };
 };
 ---
 
@@ -45,11 +49,11 @@ const getProjectDescription = (projectId: string) => {
                   >
                     <div class="project-image">
                       {(() => {
-                        const base = project.image.replace(".webp", "");
+                        const { src, srcset } = buildImageSources(project.image);
                         return (
                           <img
-                            src={`/images/projects/${base}-450.webp`}
-                            srcset={`/images/projects/${base}-450.webp 450w, /images/projects/${base}-900.webp 900w`}
+                            src={src}
+                            srcset={srcset}
                             sizes="(max-width: 600px) 100vw, 450px"
                             alt={project.title}
                             loading="lazy"

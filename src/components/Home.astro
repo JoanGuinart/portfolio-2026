@@ -1,0 +1,397 @@
+---
+import LayoutWithSidebar from "../layouts/LayoutWithSidebar.astro";
+import { useTranslations, type Lang } from "../utils/i18n";
+import projectsData from "../data/projects.json";
+import About from "./About.astro";
+import Skills from "./Skills.astro";
+import Contact from "./Contact.astro";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const allProjects = projectsData.projects.filter((project) => project.published !== false);
+const getProjectDescription = (projectId: string) => t(`projects.${projectId}` as any);
+
+const allTechnologies = Array.from(
+  new Set(
+    projectsData.projects.flatMap((project) => project.technologies)
+  )
+).sort();
+
+const buildImageSources = (image: string) => {
+  const base = image.replace(".webp", "");
+  return {
+    src: `/images/projects/${base}-450.webp`,
+    srcset: `/images/projects/${base}-450.webp 450w, /images/projects/${base}-900.webp 900w`
+  };
+};
+---
+
+<LayoutWithSidebar
+  title={t("home.meta.title")}
+  description={t("home.meta.description")}
+  lang={lang}
+>
+  <main class="main-content">
+    <!-- Hero Section (minimal) -->
+    <section class="hero-intro">
+      <div class="intro-content">
+        <h1 class="intro-title">{t("home.projects.title")}</h1>
+        <p class="intro-description">{t("home.projects.subtitle")}</p>
+      </div>
+    </section>
+
+    <!-- All Projects Grid -->
+    <section id="projects" class="projects-gallery">
+      <div class="projects-container">
+        <!-- Technology Filter -->
+        <div class="projects-filter">
+          <button class="filter-btn active" data-filter="all">
+            {t("home.projects.filterAll") || "All Projects"}
+          </button>
+          {allTechnologies.map((tech) => (
+            <button class="filter-btn" data-filter={tech}>
+              {tech}
+            </button>
+          ))}
+        </div>
+
+        <div class="projects-grid">
+          {
+            allProjects.map((project) => (
+              <article class="project-card" data-technologies={project.technologies.join(",")}>
+                <a
+                  href={project.demoUrl || "#"}
+                  target={project.demoUrl ? "_blank" : "_self"}
+                  rel={project.demoUrl ? "noopener noreferrer" : ""}
+                  class="project-link"
+                >
+                  <div class="project-image">
+                      {(() => {
+                        const { src, srcset } = buildImageSources(project.image);
+                        return (
+                          <img
+                            src={src}
+                            srcset={srcset}
+                            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            alt={project.title}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        );
+                      })()}
+                    <div class="project-overlay">
+                      <span class="view-project">
+                        {t("home.projects.viewProject")}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="project-info">
+                    <div class="project-header">
+                      <h3 class="project-title">{project.title}</h3>
+                      <span class="project-client">{project.client}</span>
+                    </div>
+
+                    <p class="project-description">
+                      {getProjectDescription(project.id)}
+                    </p>
+
+                    <div class="project-technologies">
+                      {project.technologies.slice(0, 5).map((tech) => (
+                        <span class="tech-tag">{tech}</span>
+                      ))}
+                      {project.technologies.length > 5 && (
+                        <span class="tech-more">
+                          +{project.technologies.length - 5}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <About lang={lang} />
+
+    <!-- Skills Section -->
+    <Skills lang={lang} />
+
+    <!-- Contact Section -->
+    <Contact lang={lang} />
+  </main>
+</LayoutWithSidebar>
+
+<style lang="scss">
+  @use "../_mediaqueries.scss" as *;
+  @use "../styles/variables" as *;
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Hero Intro Section
+  .hero-intro {
+    padding: var(--space-12) var(--space-8);
+    background: linear-gradient(
+      135deg,
+      var(--color-surface) 0%,
+      var(--color-surface-elevated) 100%
+    );
+    border-bottom: 1px solid var(--color-border);
+
+    @include md {
+      padding: var(--space-16) var(--space-8);
+    }
+  }
+
+  .intro-content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .intro-title {
+    font-size: clamp(var(--font-size-2xl), 8vw, var(--font-size-5xl));
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-4);
+    background: linear-gradient(
+      135deg,
+      var(--color-accent-400) 0%,
+      var(--color-accent-600) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .intro-description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+  }
+
+  // Projects Gallery
+  .projects-gallery {
+    flex: 1;
+    padding: var(--space-12) var(--space-8);
+
+    @include md {
+      padding: var(--space-16) var(--space-8);
+    }
+  }
+
+  .projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .project-card {
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &:hover {
+      border-color: var(--color-accent-500);
+      box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
+      transform: translateY(-8px);
+
+      .project-overlay {
+        opacity: 1;
+      }
+
+      .project-image img {
+        transform: scale(1.08);
+      }
+    }
+  }
+
+  .project-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .project-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 450 / 266;
+    overflow: hidden;
+    background: var(--color-surface);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-base);
+    }
+  }
+
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 78, 59, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .view-project {
+    color: var(--color-accent-50);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .project-info {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    flex: 1;
+  }
+
+  .project-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .project-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .project-client {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent-500);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .project-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: auto;
+  }
+
+  .tech-tag {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-primary-900);
+    color: var(--color-accent-400);
+    border: 1px solid var(--color-primary-700);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .tech-more {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-surface);
+    color: var(--color-text-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .projects-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+    justify-content: flex-start;
+  }
+
+  .filter-btn {
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--color-text-primary);
+
+    &:hover {
+      border-color: var(--color-primary-500);
+      background: var(--color-primary-900);
+    }
+
+    &.active {
+      background: var(--color-primary-600);
+      border-color: var(--color-primary-600);
+      color: white;
+    }
+  }
+</style>
+
+<script>
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Remove active class from all buttons
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      // Add active class to clicked button
+      btn.classList.add("active");
+
+      const filterValue = btn.getAttribute("data-filter");
+
+      // Filter projects
+      projectCards.forEach((card) => {
+        const cardElement = card as HTMLElement;
+        const technologies = cardElement
+          .getAttribute("data-technologies")
+          ?.split(",") || [];
+
+        if (filterValue && (filterValue === "all" || technologies.includes(filterValue))) {
+          cardElement.style.display = "block";
+        } else {
+          cardElement.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
