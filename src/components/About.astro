@@ -16,30 +16,27 @@ type ValueKey = "precision" | "adaptation" | "creativity";
 const journeySteps: Array<{ key: JourneyKey; icon: string }> = [
   { key: "mechanic", icon: "🔧" },
   { key: "aviation", icon: "✈️" },
-  { key: "frontend", icon: "💻" }
+  { key: "frontend", icon: "💻" },
 ];
 
 const funFacts: Array<{ key: FunFactKey; emoji: string }> = [
   { key: "skateboard", emoji: "🛹" },
-  { key: "dj", emoji: "🎧" }
+  { key: "dj", emoji: "🎧" },
 ];
 
 const valueCards: Array<{ key: ValueKey; icon: string }> = [
   {
     key: "precision",
-    icon:
-      '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L12.09 6.26L17 7L13.5 10.74L14.18 15.74L10 13.77L5.82 15.74L6.5 10.74L3 7L7.91 6.26L10 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>'
+    icon: '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L12.09 6.26L17 7L13.5 10.74L14.18 15.74L10 13.77L5.82 15.74L6.5 10.74L3 7L7.91 6.26L10 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
   },
   {
     key: "adaptation",
-    icon:
-      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20.94,11A8.26,8.26,0,0,1,21,12a9,9,0,1,1-9-9,8.83,8.83,0,0,1,4,1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><polyline points="21 5 12 14 8 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>'
+    icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20.94,11A8.26,8.26,0,0,1,21,12a9,9,0,1,1-9-9,8.83,8.83,0,0,1,4,1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><polyline points="21 5 12 14 8 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>',
   },
   {
     key: "creativity",
-    icon:
-      '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 1L13 7L19 7L14.5 11L16 17L10 14L4 17L5.5 11L1 7L7 7L10 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>'
-  }
+    icon: '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 1L13 7L19 7L14.5 11L16 17L10 14L4 17L5.5 11L1 7L7 7L10 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+  },
 ];
 
 const starIcon =
@@ -73,20 +70,22 @@ const arrowIcon =
 
           <!-- Career Path -->
           <div class="career-path">
-            {journeySteps.map((step, index) => (
-              <div class="path-segment">
-                <div class="path-item">
-                  <div class="path-icon">{step.icon}</div>
-                  <div class="path-content">
-                    <h4>{t(`home.about.journey.${step.key}.title`)}</h4>
-                    <p>{t(`home.about.journey.${step.key}.description`)}</p>
+            {
+              journeySteps.map((step, index) => (
+                <div class="path-segment">
+                  <div class="path-item">
+                    <div class="path-icon">{step.icon}</div>
+                    <div class="path-content">
+                      <h4>{t(`home.about.journey.${step.key}.title`)}</h4>
+                      <p>{t(`home.about.journey.${step.key}.description`)}</p>
+                    </div>
                   </div>
+                  {index < journeySteps.length - 1 && (
+                    <div class="path-arrow" set:html={arrowIcon} />
+                  )}
                 </div>
-                {index < journeySteps.length - 1 && (
-                  <div class="path-arrow" set:html={arrowIcon} />
-                )}
-              </div>
-            ))}
+              ))
+            }
           </div>
         </div>
 
@@ -98,15 +97,17 @@ const arrowIcon =
           </div>
 
           <div class="facts-list">
-            {funFacts.map((fact) => (
-              <div class="fact-item">
-                <div class="fact-emoji">{fact.emoji}</div>
-                <div class="fact-content">
-                  <h4>{t(`home.about.funfacts.${fact.key}.title`)}</h4>
-                  <p>{t(`home.about.funfacts.${fact.key}.description`)}</p>
+            {
+              funFacts.map((fact) => (
+                <div class="fact-item">
+                  <div class="fact-emoji">{fact.emoji}</div>
+                  <div class="fact-content">
+                    <h4>{t(`home.about.funfacts.${fact.key}.title`)}</h4>
+                    <p>{t(`home.about.funfacts.${fact.key}.description`)}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            }
           </div>
         </div>
       </div>
@@ -115,13 +116,15 @@ const arrowIcon =
       <div class="values-section">
         <h3 class="values-title">{t("home.about.values.title")}</h3>
         <div class="values-grid">
-          {valueCards.map((value) => (
-            <div class="value-item">
-              <div class="value-icon" set:html={value.icon} />
-              <h4>{t(`home.about.values.${value.key}.title`)}</h4>
-              <p>{t(`home.about.values.${value.key}.description`)}</p>
-            </div>
-          ))}
+          {
+            valueCards.map((value) => (
+              <div class="value-item">
+                <div class="value-icon" set:html={value.icon} />
+                <h4>{t(`home.about.values.${value.key}.title`)}</h4>
+                <p>{t(`home.about.values.${value.key}.description`)}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -300,6 +303,7 @@ const arrowIcon =
     @include md {
       display: flex;
       margin: 0 var(--space-2);
+      justify-content: center;
     }
   }
 
