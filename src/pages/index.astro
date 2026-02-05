@@ -1,6 +1,20 @@
 ---
-import Home from "../components/Home.astro";
-import { defaultLang } from '../utils/i18n';
+import Layout from "../layouts/Layout.astro";
+import Profile from "../components/Profile.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import projectsData from "../data/projects.json";
+
+const allProjects = projectsData.projects.filter(
+  (project) => project.published !== false,
+);
 ---
 
-<Home lang={defaultLang} />
+<Layout
+  title="Joan Guinart Portfolio"
+  description="Welcome to my portfolio website, showcasing my projects and skills in web development. Explore my work and get in touch!"
+  lang="en"
+>
+  <Profile />
+
+  {allProjects.map((project) => <ProjectCard project={project} />)}
+</Layout>

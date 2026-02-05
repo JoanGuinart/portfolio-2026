@@ -1,0 +1,176 @@
+---
+import { buildImageSources, getTechToDisplay, CSS_CLASSES } from "../utils/projectUtils";
+
+interface Props {
+  project: {
+    id: string;
+    title: string;
+    client: string;
+    technologies: string[];
+    image: string;
+    demoUrl: string;
+  };
+}
+
+const { project } = Astro.props;
+const { src, srcset } = buildImageSources(project.image);
+const { displayed: displayedTechs, remaining: remainingTechs } = getTechToDisplay(
+  project.technologies
+);
+---
+
+<div class="project-card-wrapper group cursor-pointer relative" data-project-card>
+  <a
+    href={project.demoUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="hidden"
+    data-desktop-link
+  ></a>
+
+  <div class="flip-card relative w-full rounded-lg overflow-hidden bg-white aspect-[4/3]">
+    <div class="flip-card-inner absolute inset-0 w-full h-full transition-transform duration-700">
+      <!-- Front -->
+      <div class="flip-card-front absolute inset-0 w-full h-full rounded-lg overflow-hidden bg-white">
+        <img
+          src={src}
+          srcset={srcset}
+          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          alt={project.title}
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover lg:transition-transform lg:duration-300 lg:group-hover:scale-105"
+        />
+
+        <!-- Mobile info button -->
+        <button
+          class={CSS_CLASSES.buttons.mobileInfo}
+          data-flip-btn
+        >
+          + Info
+        </button>
+      </div>
+
+      <!-- Back -->
+      <div class="flip-card-back absolute inset-0 w-full h-full rounded-lg overflow-hidden bg-gradient-to-br from-black to-gray-900">
+        <div class="flex flex-col justify-center items-center h-full p-6 text-center relative">
+          <h3 class="text-white font-bold text-xl mb-2">{project.title}</h3>
+          <p class="text-white/85 text-sm mb-4">{project.client}</p>
+          
+          <!-- Tech tags -->
+          <div class="flex flex-wrap gap-2 justify-center mb-6">
+            {displayedTechs.map((tech) => (
+              <span class={CSS_CLASSES.techTags.mobile}>{tech}</span>
+            ))}
+            {remainingTechs > 0 && (
+              <span class={CSS_CLASSES.techTags.mobile}>+{remainingTechs}</span>
+            )}
+          </div>
+
+          <!-- Mobile buttons -->
+          <div class="flex gap-3 mt-4">
+            <button
+              class={CSS_CLASSES.buttons.mobileBack}
+              data-flip-back-btn
+            >
+              Return
+            </button>
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={CSS_CLASSES.buttons.mobileLink}
+              data-project-link
+            >
+              View Project
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop hover overlay -->
+    <div class="hidden lg:block absolute inset-0 bg-gradient-to-b from-transparent to-black/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+      <div class="flex flex-col justify-end h-full p-5">
+        <h3 class="text-white font-bold text-lg">{project.title}</h3>
+        <p class="text-white/85 text-sm mb-2">{project.client}</p>
+        <div class="flex flex-wrap gap-2">
+          {displayedTechs.map((tech) => (
+            <span class={CSS_CLASSES.techTags.desktop}>{tech}</span>
+          ))}
+          {remainingTechs > 0 && (
+            <span class={CSS_CLASSES.techTags.desktop}>+{remainingTechs}</span>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    transform-style: preserve-3d;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+
+  @media (max-width: 1024px) {
+    .project-card-wrapper.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+  }
+</style>
+
+<script>
+  const card = document.currentScript?.closest('[data-project-card]');
+  if (card) {
+    const flipBtn = card.querySelector('[data-flip-btn]');
+    const flipBackBtn = card.querySelector('[data-flip-back-btn]');
+    const projectLink = card.querySelector('[data-project-link]');
+    const desktopLink = card.querySelector('[data-desktop-link]');
+
+    // Mobile/Tablet: flip functionality
+    if (flipBtn) {
+      flipBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        card.classList.add('flipped');
+      });
+    }
+
+    if (flipBackBtn) {
+      flipBackBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        card.classList.remove('flipped');
+      });
+    }
+
+    if (projectLink) {
+      projectLink.addEventListener('click', () => {
+        card.classList.remove('flipped');
+      });
+    }
+
+    // Desktop: click to open project
+    if (window.innerWidth >= 1024 && desktopLink) {
+      card.addEventListener('click', (e) => {
+        if (!(e.target as Element).closest('button')) {
+          (desktopLink as HTMLElement).click();
+        }
+      });
+    }
+  }
+</script>

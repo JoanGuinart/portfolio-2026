@@ -10,7 +10,9 @@
     "images:convert": "node scripts/convert-images.mjs"
   },
   "dependencies": {
-    "astro": "^5.15.5"
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.15.5",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "sass": "^1.94.0",

@@ -1,5 +1,5 @@
 ---
-import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
 
 export interface Props {
   title: string;
@@ -16,7 +16,9 @@ const {
 } = Astro.props;
 
 const siteUrl = "https://joanguinart.dev";
-const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
+const fullOgImage = ogImage.startsWith("http")
+  ? ogImage
+  : `${siteUrl}${ogImage}`;
 ---
 
 <!doctype html>
@@ -27,21 +29,21 @@ const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={fullOgImage} />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={fullOgImage} />
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -52,8 +54,11 @@ const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}
     <title>{title}</title>
   </head>
   <body>
-    <Navbar />
-    <slot />
+    <main
+      class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-5 px-5 mx-auto max-w-490 p-4"
+    >
+      <slot />
+    </main>
   </body>
 </html>
 
