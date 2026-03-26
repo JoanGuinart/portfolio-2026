@@ -1,5 +1,16 @@
 {
   "projects": [
+      {
+      "id": "task-flow",
+      "title": "Team Productivity SaaS",
+      "description": "Built a full-stack SaaS productivity app inspired by Jira and Linear, focused on simple task management, team collaboration, and clean user experience.",
+      "client": "Personal Project",
+      "technologies": ["Next.js", "Tailwind CSS", "TypeScript", "Prisma", "PostgreSQL", "Vercel", "Supabase"],
+      "image": "task-flow.webp",
+      "featured": true,
+      "demoUrl": "https://team-productivity-saas.vercel.app/",
+      "year": 2026
+    },
     {
       "id": "chef-assist-ai",
       "title": "Chef Assist AI",
@@ -9,7 +20,7 @@
       "image": "chef-assist-ai.webp",
       "featured": true,
       "demoUrl": "https://chef-assist-ai.vercel.app/",
-      "year": 2025
+      "year": 2026
     },
     {
       "id": "rps-pattern-ai-game",
@@ -20,7 +31,7 @@
       "image": "rps-pattern-ai-game.webp",
       "featured": true,
       "demoUrl": "https://rps-pattern-ai.vercel.app/",
-      "year": 2025
+      "year": 2026
     },
     {
       "id": "menja-sa-i-sostenible",
