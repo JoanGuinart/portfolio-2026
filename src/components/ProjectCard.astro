@@ -1,5 +1,9 @@
 ---
-import { buildImageSources, getTechToDisplay, CSS_CLASSES } from "../utils/projectUtils";
+import {
+  buildImageSources,
+  getTechToDisplay,
+  CSS_CLASSES,
+} from "../utils/projectUtils";
 
 interface Props {
   project: {
@@ -14,59 +18,76 @@ interface Props {
 
 const { project } = Astro.props;
 const { src, srcset } = buildImageSources(project.image);
-const { displayed: displayedTechs, remaining: remainingTechs } = getTechToDisplay(
-  project.technologies
-);
+const { displayed: displayedTechs, remaining: remainingTechs } =
+  getTechToDisplay(project.technologies);
 ---
 
-<div class="project-card-wrapper group cursor-pointer relative" data-project-card data-project-url={project.demoUrl}>
-  <div class="flip-card relative w-full rounded-lg overflow-hidden bg-white aspect-[4/3]">
-    <div class="flip-card-inner absolute inset-0 w-full h-full transition-transform duration-700">
+<div
+  class="project-card-wrapper group cursor-pointer relative"
+  data-project-card
+  data-project-url={project.demoUrl}
+>
+  <div
+    class="flip-card relative w-full rounded-lg overflow-hidden bg-white aspect-4/3"
+  >
+    <div
+      class="flip-card-inner absolute inset-0 w-full h-full transition-transform duration-700"
+    >
       <!-- Front -->
-      <div class="flip-card-front absolute inset-0 w-full h-full rounded-lg overflow-hidden bg-white">
-        <img
-          src={src}
-          srcset={srcset}
-          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          alt={project.title}
-          loading="lazy"
-          decoding="async"
-          class="w-full h-full object-cover lg:transition-transform lg:duration-300 lg:group-hover:scale-105"
-        />
+      <div
+        class="flip-card-front absolute inset-0 w-full h-full rounded-lg overflow-hidden bg-white"
+      >
+        <a
+          href={project.demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block w-full h-full"
+        >
+          <img
+            src={src}
+            srcset={srcset}
+            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            alt={project.title}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover lg:transition-transform lg:duration-300 lg:group-hover:scale-105"
+          />
+        </a>
 
         <!-- Mobile info button -->
-        <button
-          class={CSS_CLASSES.buttons.mobileInfo}
-          data-flip-btn
-        >
+        <button class={CSS_CLASSES.buttons.mobileInfo} data-flip-btn>
           + Info
         </button>
       </div>
 
       <!-- Back -->
-      <div class="flip-card-back absolute inset-0 w-full h-full rounded-lg overflow-hidden bg-gradient-to-br from-black to-gray-900">
-        <div class="flex flex-col justify-center items-center h-full p-6 text-center relative">
+      <div
+        class="flip-card-back absolute inset-0 w-full h-full rounded-lg overflow-hidden bg-linear-to-br from-black to-gray-900"
+      >
+        <div
+          class="flex flex-col justify-center items-center h-full p-6 text-center relative"
+        >
           <h3 class="text-white font-bold text-xl mb-2">{project.title}</h3>
           <p class="text-white/85 text-sm mb-4">{project.client}</p>
-          
+
           <!-- Tech tags -->
           <div class="flex flex-wrap gap-2 justify-center mb-6">
-            {displayedTechs.map((tech) => (
-              <span class={CSS_CLASSES.techTags.mobile}>{tech}</span>
-            ))}
-            {remainingTechs > 0 && (
-              <span class={CSS_CLASSES.techTags.mobile}>+{remainingTechs}</span>
-            )}
+            {
+              displayedTechs.map((tech) => (
+                <span class={CSS_CLASSES.techTags.mobile}>{tech}</span>
+              ))
+            }
+            {
+              remainingTechs > 0 && (
+                <span class={CSS_CLASSES.techTags.mobile}>
+                  +{remainingTechs}
+                </span>
+              )
+            }
           </div>
 
           <!-- Mobile buttons -->
           <div class="flex gap-3 mt-4">
-            <button
-              class={CSS_CLASSES.buttons.mobileBack}
-              data-flip-back-btn
-            >
-              Return
-            </button>
             <a
               href={project.demoUrl}
               target="_blank"
@@ -77,22 +98,33 @@ const { displayed: displayedTechs, remaining: remainingTechs } = getTechToDispla
               View Project
             </a>
           </div>
+          <button class={CSS_CLASSES.buttons.mobileInfo} data-flip-back-btn>
+            Return
+          </button>
         </div>
       </div>
     </div>
 
     <!-- Desktop hover overlay -->
-    <div class="hidden lg:block absolute inset-0 bg-gradient-to-b from-transparent to-black/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+    <div
+      class="hidden lg:block absolute inset-0 bg-linear-to-b from-transparent to-black/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+    >
       <div class="flex flex-col justify-end h-full p-5">
         <h3 class="text-white font-bold text-lg">{project.title}</h3>
         <p class="text-white/85 text-sm mb-2">{project.client}</p>
         <div class="flex flex-wrap gap-2">
-          {displayedTechs.map((tech) => (
-            <span class={CSS_CLASSES.techTags.desktop}>{tech}</span>
-          ))}
-          {remainingTechs > 0 && (
-            <span class={CSS_CLASSES.techTags.desktop}>+{remainingTechs}</span>
-          )}
+          {
+            displayedTechs.map((tech) => (
+              <span class={CSS_CLASSES.techTags.desktop}>{tech}</span>
+            ))
+          }
+          {
+            remainingTechs > 0 && (
+              <span class={CSS_CLASSES.techTags.desktop}>
+                +{remainingTechs}
+              </span>
+            )
+          }
         </div>
       </div>
     </div>
@@ -133,55 +165,63 @@ const { displayed: displayedTechs, remaining: remainingTechs } = getTechToDispla
 
 <script>
   function initializeProjectCards() {
-    const cards = document.querySelectorAll('[data-project-card]');
-    
+    const cards = document.querySelectorAll("[data-project-card]");
+
     cards.forEach((card) => {
       // Prevent multiple initializations
-      if (card.hasAttribute('data-initialized')) return;
-      card.setAttribute('data-initialized', 'true');
+      if (card.hasAttribute("data-initialized")) return;
+      card.setAttribute("data-initialized", "true");
 
-      const flipBtn = card.querySelector('[data-flip-btn]');
-      const flipBackBtn = card.querySelector('[data-flip-back-btn]');
-      const projectUrl = card.getAttribute('data-project-url');
+      const flipBtn = card.querySelector("[data-flip-btn]");
+      const flipBackBtn = card.querySelector("[data-flip-back-btn]");
+      const projectUrl = card.getAttribute("data-project-url");
 
       // Mobile/Tablet: flip functionality
       if (flipBtn) {
-        flipBtn.addEventListener('click', (e) => {
+        flipBtn.addEventListener("click", (e) => {
           e.preventDefault();
           e.stopPropagation();
-          card.classList.add('flipped');
+
+          // Keep only one card flipped at a time.
+          cards.forEach((otherCard) => {
+            if (otherCard !== card) {
+              otherCard.classList.remove("flipped");
+            }
+          });
+
+          card.classList.add("flipped");
         });
       }
 
       if (flipBackBtn) {
-        flipBackBtn.addEventListener('click', (e) => {
+        flipBackBtn.addEventListener("click", (e) => {
           e.preventDefault();
           e.stopPropagation();
-          card.classList.remove('flipped');
+          card.classList.remove("flipped");
         });
       }
 
       // Desktop: click entire card to open project
-      card.addEventListener('click', (e) => {
+      card.addEventListener("click", (e) => {
         const target = e.target as Element;
-        
+
         // On mobile/tablet, don't navigate on card click (only through buttons)
         if (window.innerWidth < 1024) {
           // Allow button clicks to propagate
           return;
         }
-        
+
         // On desktop, navigate to project when clicking the card
-        if (projectUrl && !target.closest('button') && !target.closest('a')) {
-          window.open(projectUrl, '_blank', 'noopener,noreferrer');
+        if (projectUrl && !target.closest("button") && !target.closest("a")) {
+          window.open(projectUrl, "_blank", "noopener,noreferrer");
         }
       });
     });
   }
 
   // Initialize on load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeProjectCards);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeProjectCards);
   } else {
     initializeProjectCards();
   }

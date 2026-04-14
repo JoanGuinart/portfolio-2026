@@ -26,9 +26,9 @@ export const getTechToDisplay = (technologies: string[]) => {
 
 export const CSS_CLASSES = {
   buttons: {
-    mobileInfo: "lg:hidden absolute bottom-4 right-4 bg-black text-white px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg hover:bg-gray-800 transition z-20",
-    mobileBack: "lg:hidden bg-white text-black px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg hover:bg-gray-200 transition",
-    mobileLink: "lg:hidden bg-yellow-400 text-black px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg hover:bg-yellow-500 transition",
+    mobileInfo: "lg:hidden absolute bottom-4 right-4 bg-black text-white px-4 py-2 border border-white rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg hover:bg-gray-800 transition z-20",
+    mobileBack: "lg:hidden bg-white text-black px-4 py-2 border border-black rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg hover:bg-gray-200 transition",
+    mobileLink: "lg:hidden bg-yellow-400 text-black px-4 py-2 border border-yellow-500 rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg hover:bg-yellow-500 transition",
   },
   techTags: {
     mobile: "text-xs bg-white/25 backdrop-blur px-2 py-1 rounded-full text-white",
