@@ -1,5 +1,56 @@
 {
   "projects": [
+    {
+      "id": "the-left-bit",
+      "title": "The Left Bit",
+      "description": "Rebuilt from scratch the corporate website of The Left Bit, a Barcelona native software studio: multilingual (EN/ES/CA), fast and fully static.",
+      "client": "The Left Bit",
+      "technologies": ["Astro", "TypeScript", "Tailwind CSS", "i18n"],
+      "image": "the-left-bit.webp",
+      "featured": true,
+      "recent": true,
+      "current": true,
+      "demoUrl": "https://theleftbit.com/",
+      "year": 2026
+    },
+    {
+      "id": "typeform",
+      "title": "Typeform",
+      "description": "Maintaining and evolving Typeform's marketing website: new pages, components and ongoing improvements.",
+      "client": "Typeform",
+      "technologies": ["React", "TypeScript", "CSS"],
+      "image": "typeform.webp",
+      "featured": true,
+      "recent": true,
+      "current": true,
+      "demoUrl": "https://www.typeform.com/",
+      "year": 2026
+    },
+    {
+      "id": "barpass",
+      "title": "BarPass",
+      "description": "QR ordering SaaS for bars and restaurants: customers order from the table and the order goes straight to the bar.",
+      "client": "Owner · BarPass",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
+      "image": "barpass.webp",
+      "featured": true,
+      "recent": true,
+      "current": true,
+      "demoUrl": "https://barpass.es/",
+      "year": 2026
+    },
+    {
+      "id": "blastoestimulina",
+      "title": "Blastoestimulina",
+      "description": "Brand website for Blastoestimulina, Almirall's Centella asiatica healing ointment: product catalogue, indications, tips and blog.",
+      "client": "Almirall",
+      "technologies": ["Nuxt 3", "Vue.js", "Tailwind CSS"],
+      "image": "blastoestimulina.webp",
+      "featured": true,
+      "recent": true,
+      "demoUrl": "https://www.blastoestimulina.com/",
+      "year": 2025
+    },
       {
       "id": "task-flow",
       "title": "Team Productivity SaaS",
