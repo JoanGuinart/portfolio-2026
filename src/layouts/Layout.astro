@@ -7,6 +7,8 @@ export interface Props {
   description?: string;
   lang?: string;
   ogImage?: string;
+  /** "grid" for the project grid (home), "page" for regular content pages */
+  variant?: "grid" | "page";
 }
 
 const {
@@ -14,6 +16,7 @@ const {
   description = "Joan Guinart Portfolio",
   lang = "en",
   ogImage = "/images/og-image.jpg",
+  variant = "grid",
 } = Astro.props;
 
 const siteUrl = "https://joanguinart.dev";
@@ -56,7 +59,9 @@ const fullOgImage = ogImage.startsWith("http")
   </head>
   <body>
     <main
-      class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-5 px-5 mx-auto max-w-490 p-4"
+      class={variant === "grid"
+        ? "grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 py-5 px-5 mx-auto max-w-490 p-4"
+        : "mx-auto max-w-5xl px-5 py-6 sm:py-10"}
     >
       <slot />
     </main>

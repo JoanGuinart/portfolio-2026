@@ -98,7 +98,7 @@
     {
       "id": "infonet-fr",
       "title": "Infonet FR",
-      "description": "B2B financial data platform for investors - Led full frontend implementation with Symfony and backend team",
+      "description": "B2B financial data platform for investors - contributed frontend features to the existing SaaS alongside the backend team",
       "client": "Infonet France",
       "technologies": [
         "Bootstrap",

@@ -3,9 +3,11 @@ import {
   buildImageSources,
   getTechToDisplay,
   CSS_CLASSES,
+  projectPath,
 } from "../utils/projectUtils";
 
 const { project } = Astro.props;
+const href = projectPath(project.id);
 const { src, srcset } = buildImageSources(project.image);
 const { displayed: displayedTechs, remaining: remainingTechs } =
   getTechToDisplay(project.technologies);
@@ -14,7 +16,6 @@ const { displayed: displayedTechs, remaining: remainingTechs } =
 <div
   class="project-card-wrapper group cursor-pointer relative"
   data-project-card
-  data-project-url={project.demoUrl}
 >
   <div
     class="flip-card relative w-full rounded-lg overflow-hidden bg-white aspect-4/3"
@@ -27,10 +28,8 @@ const { displayed: displayedTechs, remaining: remainingTechs } =
         class="flip-card-front absolute inset-0 w-full h-full rounded-lg overflow-hidden bg-white"
       >
         <a
-          href={project.demoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Open ${project.title} (new tab)`}
+          href={href}
+          aria-label={`View ${project.title} project details`}
           class="block w-full h-full"
         >
           <img
@@ -146,14 +145,16 @@ const { displayed: displayedTechs, remaining: remainingTechs } =
 
           <!-- Mobile buttons -->
           <div class="flex gap-3 mt-4">
+            <a href={href} class={CSS_CLASSES.buttons.mobileLink}>
+              View project
+            </a>
             <a
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class={CSS_CLASSES.buttons.mobileLink}
-              data-project-link
+              class={CSS_CLASSES.buttons.mobileBack}
             >
-              View Project
+              <span class="inline-flex items-center gap-1.5">Visit site <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></span>
             </a>
           </div>
           <button
@@ -215,7 +216,6 @@ const { displayed: displayedTechs, remaining: remainingTechs } =
 
       const flipBtn = card.querySelector("[data-flip-btn]");
       const flipBackBtn = card.querySelector("[data-flip-back-btn]");
-      const projectUrl = card.getAttribute("data-project-url");
 
       // Mobile/Tablet: flip functionality
       if (flipBtn) {
@@ -241,22 +241,6 @@ const { displayed: displayedTechs, remaining: remainingTechs } =
           card.classList.remove("flipped");
         });
       }
-
-      // Desktop: click entire card to open project
-      card.addEventListener("click", (e) => {
-        const target = e.target as Element;
-
-        // On mobile/tablet, don't navigate on card click (only through buttons)
-        if (window.innerWidth < 1024) {
-          // Allow button clicks to propagate
-          return;
-        }
-
-        // On desktop, navigate to project when clicking the card
-        if (projectUrl && !target.closest("button") && !target.closest("a")) {
-          window.open(projectUrl, "_blank", "noopener,noreferrer");
-        }
-      });
     });
   }
 
