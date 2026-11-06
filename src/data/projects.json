@@ -16,7 +16,7 @@
     {
       "id": "typeform",
       "title": "Typeform",
-      "description": "Maintaining and evolving Typeform's marketing website: new pages, components and ongoing improvements.",
+      "description": "Frontend development and maintenance across the Typeform product: forms, accessibility and ongoing improvements.",
       "client": "Typeform",
       "technologies": ["React", "TypeScript", "CSS"],
       "image": "typeform.webp",
